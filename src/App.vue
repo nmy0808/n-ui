@@ -1,28 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <n-button></n-button>
+    <n-button icon="i-search">按钮按钮</n-button>
+    <n-button @click="handleClick" position="right" icon="i-setup">
+      按钮
+    </n-button>
+    <n-button-group>
+      <n-button icon="i-arrowleft">前进</n-button>
+      <n-button>随便</n-button>
+      <n-button icon="i-arrowright" position="right">后退</n-button>
+    </n-button-group>
+    <n-button-group>
+      <n-button icon="i-arrowleft">前进</n-button>
+      <n-button icon="i-arrowright" position="right">后退</n-button>
+    </n-button-group>
+    <n-button icon="i-arrowright" :loading="true" position="right"
+      >后退</n-button
+    >
+    <n-button
+      icon="i-arrowright"
+      :loading="loading"
+      position="left"
+      @click="loading = !loading"
+      >提交</n-button
+    >
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import NButton from '@/components/Button.vue';
+import NButtonGroup from '@/components/ButtonGroup.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
+  components: { NButton, NButtonGroup },
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  methods: {
+    handleClick() {
+      console.log(111);
+    },
   },
 };
 </script>
-
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import '~@/styles/global.scss';
 </style>
