@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import NIcon from '@/components/Icon.vue';
+import NIcon from '@/components/basic/icon/Icon.vue';
 
 export default {
   components: { NIcon },

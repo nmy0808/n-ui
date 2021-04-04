@@ -15,9 +15,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '//at.alicdn.com/t/font_2449846_50f5dvgg2r5.css';
+@import '//at.alicdn.com/t/font_2449846_sq4i7gxgce.css';
 @import '~@/styles/var.scss';
-.n-icon-container {
+.n-icon {
   font-size: $icon-size;
   // height: $icon-size;
   vertical-align: middle;
