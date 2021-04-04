@@ -1,5 +1,71 @@
 <template>
   <div id="app">
+    <div class="box-item layout-box">
+      <n-layout>
+        <n-header class="layout-item">header</n-header>
+        <n-content class="layout-item">content</n-content>
+        <n-footer class="layout-item">footer</n-footer>
+      </n-layout>
+    </div>
+    <div class="box-item layout-box">
+      <n-layout>
+        <n-header class="layout-item">header</n-header>
+        <n-layout>
+          <n-sider class="layout-item">sider</n-sider>
+          <n-content class="layout-item">content</n-content>
+        </n-layout>
+        <n-footer class="layout-item">footer</n-footer>
+      </n-layout>
+    </div>
+    <div class="box-item layout-box">
+      <n-layout>
+        <n-sider class="layout-item">sider</n-sider>
+        <n-layout>
+          <n-header class="layout-item">header</n-header>
+          <n-content class="layout-item">content</n-content>
+          <n-footer class="layout-item">footer</n-footer>
+        </n-layout>
+      </n-layout>
+    </div>
+    <div class="box-item">
+      <n-row class="row" align="middle" justify="space-around">
+        <n-col class="col">
+          <div class="content">11</div>
+        </n-col>
+        <n-col class="col">
+          <div class="content">2</div>
+        </n-col>
+        <n-col class="col">
+          <div class="content">3</div>
+        </n-col>
+      </n-row>
+    </div>
+    <div class="box-item">
+      <n-row class="row" align="top" justify="space-around">
+        <n-col :span="5" class="col">
+          <div class="content">1</div>
+        </n-col>
+        <n-col :span="5" class="col">
+          <div class="content">2</div>
+        </n-col>
+        <n-col :span="12" class="col">
+          <div class="content">3</div>
+        </n-col>
+      </n-row>
+    </div>
+    <div class="box-item">
+      <n-row :gutter="10" class="row">
+        <n-col :xs="8" class="col">
+          <div class="content"></div>
+        </n-col>
+        <n-col :xs="8" class="col">
+          <div class="content"></div>
+        </n-col>
+        <n-col :xs="8" class="col">
+          <div class="content"></div>
+        </n-col>
+      </n-row>
+    </div>
     <div class="box-item">
       <h2>基础</h2>
       <p>基础表单组件，支持v-model绑定和原生事件。</p>
@@ -45,9 +111,27 @@
 import NButton from '@/components/Button.vue';
 import NButtonGroup from '@/components/ButtonGroup.vue';
 import NInput from '@/components/form/input/Input.vue';
+import NRow from '@/components/layout/grid/Row.vue';
+import NCol from '@/components/layout/grid/Col.vue';
+import NLayout from '@/components/layout/container/Layout.vue';
+import NHeader from '@/components/layout/container/Header.vue';
+import NFooter from '@/components/layout/container/Footer.vue';
+import NContent from '@/components/layout/container/Content.vue';
+import NSider from '@/components/layout/container/Sider.vue';
 
 export default {
-  components: { NButton, NButtonGroup, NInput },
+  components: {
+    NButton,
+    NButtonGroup,
+    NInput,
+    NRow,
+    NCol,
+    NLayout,
+    NHeader,
+    NFooter,
+    NContent,
+    NSider,
+  },
   data() {
     return {
       loading: false,
@@ -55,9 +139,7 @@ export default {
     };
   },
   methods: {
-    handleClick() {
-      console.log(111);
-    },
+    handleClick() {},
   },
 };
 </script>
@@ -66,5 +148,28 @@ export default {
 .box-item {
   width: 80%;
   padding: 20px;
+}
+// .box-item:nth-child(1),
+// .box-item:nth-child(2) {
+//   border: 1px solid;
+//   padding: 0;
+// }
+.row {
+  height: 200px;
+  .col {
+    height: 100px;
+    .content {
+      background: teal;
+      height: 100px;
+      border: 1px solid;
+    }
+  }
+}
+.layout-box {
+  height: 200px;
+}
+.layout-item {
+  border: 1px solid;
+  min-height: 40px;
 }
 </style>
