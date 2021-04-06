@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <div class="box-item layout-box">
+      <n-button @click="handleToast">弹出</n-button>
+    </div>
+    <div class="box-item layout-box">
       <n-layout>
         <n-header class="layout-item">header</n-header>
         <n-content class="layout-item">content</n-content>
@@ -140,6 +143,15 @@ export default {
   },
   methods: {
     handleClick() {},
+    handleToast() {
+      this.$toast({
+        content: '消息提消息提示消息消息提示消息示消息',
+        duration: 2,
+        closeBtn: '关闭',
+        onClose: () => console.log('toast组件-关闭按钮回调'),
+        position: 'bottom',
+      });
+    },
   },
 };
 </script>
