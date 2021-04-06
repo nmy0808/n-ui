@@ -1,5 +1,5 @@
 /* eslint-disable */
-import Toast from '@/components/feedback/Toast.vue';
+import Toast from '@/components/feedback/toast/Toast.vue';
 
 let toastCache = null;
 export default {

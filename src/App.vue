@@ -111,8 +111,8 @@
   </div>
 </template>
 <script>
-import NButton from '@/components/Button.vue';
-import NButtonGroup from '@/components/ButtonGroup.vue';
+import NButton from '@/components/basic/button/Button.vue';
+import NButtonGroup from '@/components/basic/button/ButtonGroup.vue';
 import NInput from '@/components/form/input/Input.vue';
 import NRow from '@/components/layout/grid/Row.vue';
 import NCol from '@/components/layout/grid/Col.vue';

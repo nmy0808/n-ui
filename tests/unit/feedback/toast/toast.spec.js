@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { shallowMount } from '@vue/test-utils';
-import Toast from '@/components/feedback/Toast.vue';
+import Toast from '@/components/feedback/toast/Toast.vue';
 import { findTestWrapper } from '@/utils';
 
 describe('Toast.Vue', () => {
