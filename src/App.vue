@@ -1,5 +1,22 @@
 <template>
   <div id="app">
+    <div class="box-item">
+      <n-tabs v-model="selected" @tabClick="tabClick">
+        <tab-head>
+          <template #tabBarExtraContent>
+            <n-button>按钮</n-button>
+          </template>
+          <tab-title name="tab1">标签一</tab-title>
+          <tab-title name="tab2">标签二</tab-title>
+          <tab-title name="tab3" disabled>标签三</tab-title>
+        </tab-head>
+        <tab-body>
+          <tab-pane name="tab1">内容1</tab-pane>
+          <tab-pane name="tab2">内容2</tab-pane>
+          <tab-pane name="tab3">内容3</tab-pane>
+        </tab-body>
+      </n-tabs>
+    </div>
     <div class="box-item layout-box">
       <n-button @click="handleToast">弹出</n-button>
     </div>
@@ -121,6 +138,11 @@ import NHeader from '@/components/layout/container/Header.vue';
 import NFooter from '@/components/layout/container/Footer.vue';
 import NContent from '@/components/layout/container/Content.vue';
 import NSider from '@/components/layout/container/Sider.vue';
+import NTabs from '@/components/navigation/tabs/Tabs.vue';
+import TabHead from '@/components/navigation/tabs/TabHead.vue';
+import TabBody from '@/components/navigation/tabs/TabBody.vue';
+import TabTitle from '@/components/navigation/tabs/TabTitle.vue';
+import TabPane from '@/components/navigation/tabs/TabPane.vue';
 
 export default {
   components: {
@@ -134,15 +156,27 @@ export default {
     NFooter,
     NContent,
     NSider,
+    NTabs,
+    TabHead,
+    TabBody,
+    TabTitle,
+    TabPane,
   },
   data() {
     return {
       loading: false,
       inputValue: '222',
+      // tabs
+      selected: 'tab2',
     };
   },
   methods: {
-    handleClick() {},
+    tabClick(e) {
+      console.log(e);
+      this.$toast('回调哦!');
+    },
+    handleClick() {
+    },
     handleToast() {
       this.$toast({
         content: '消息提消息提示消息消息提示消息示消息',
@@ -161,11 +195,6 @@ export default {
   width: 80%;
   padding: 20px;
 }
-// .box-item:nth-child(1),
-// .box-item:nth-child(2) {
-//   border: 1px solid;
-//   padding: 0;
-// }
 .row {
   height: 200px;
   .col {
