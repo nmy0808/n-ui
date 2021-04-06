@@ -3,14 +3,12 @@
     <div class="box-item">
       <n-tabs v-model="selected" @tabClick="tabClick">
         <tab-head>
-          <template #tabBarExtraContent>
-            <n-button>按钮</n-button>
-          </template>
+          <n-button slot="tabBarExtraContent">按钮</n-button>
           <tab-title name="tab1">标签一</tab-title>
           <tab-title name="tab2">标签二</tab-title>
           <tab-title name="tab3" disabled>标签三</tab-title>
         </tab-head>
-        <tab-body>
+        <tab-body class="tab-body">
           <tab-pane name="tab1">内容1</tab-pane>
           <tab-pane name="tab2">内容2</tab-pane>
           <tab-pane name="tab3">内容3</tab-pane>
@@ -175,8 +173,7 @@ export default {
       console.log(e);
       this.$toast('回调哦!');
     },
-    handleClick() {
-    },
+    handleClick() {},
     handleToast() {
       this.$toast({
         content: '消息提消息提示消息消息提示消息示消息',
@@ -191,6 +188,9 @@ export default {
 </script>
 <style lang="scss">
 @import '~@/styles/global.scss';
+.tab-body{
+  height: 200px;
+}
 .box-item {
   width: 80%;
   padding: 20px;

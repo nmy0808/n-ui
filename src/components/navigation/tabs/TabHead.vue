@@ -33,12 +33,11 @@ export default {
   height: 40px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #999;
   position: relative;
   .line {
     position: absolute;
     bottom: 0;
-    height: 1px;
+    height: 2px;
     background: #3584fc;
     transition: all 0.1s;
   }

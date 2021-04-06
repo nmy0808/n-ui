@@ -48,7 +48,6 @@ export default {
           });
         }
       });
-      // this.eventBus.$emit('update:selected',)
     }
     //  点击`tab-title组件`的监听总线
     this.eventBus.$on('update:selected', (vm) => {
@@ -58,7 +57,6 @@ export default {
       this.$emit('tabClick', e);
     });
   },
-  methods: {},
 };
 </script>
 

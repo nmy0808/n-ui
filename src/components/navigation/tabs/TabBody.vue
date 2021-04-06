@@ -10,5 +10,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.tabs-body-container {
+  background: #f5f5f5;
+}
 </style>
