@@ -1,27 +1,58 @@
 <template>
   <div id="app">
     <div class="box-item">
+      {{ collapseSelected }}
+      <n-collapse v-model="collapseSelected" :single="true">
+        <n-collapse-item name="1">
+          <template #title> 新闻 </template>
+          经过税务机关3个多月的依法调查核实，群众举报范冰冰“阴阳合同”涉税问题有了明确结果。
+          税务机关依法向范冰冰作出追缴税款、滞纳金并处以罚款的决定。
+          社会各界特别是文艺影视工作者坚决支持税务部门依法查处此案，并从中得到教育警示。
+        </n-collapse-item>
+        <n-collapse-item name="2">
+          <template #title> 财经 </template>
+          经过税务机关3个多月的依法调查核实，群众举报范冰冰“阴阳合同”涉税问题有了明确结果。
+          税务机关依法向范冰冰作出追缴税款、滞纳金并处以罚款的决定。
+          社会各界特别是文艺影视工作者坚决支持税务部门依法查处此案，并从中得到教育警示。
+        </n-collapse-item>
+        <n-collapse-item name="3">
+          <template #title> 体育 </template>
+          经过税务机关3个多月的依法调查核实，群众举报范冰冰“阴阳合同”涉税问题有了明确结果。
+          税务机关依法向范冰冰作出追缴税款、滞纳金并处以罚款的决定。
+          社会各界特别是文艺影视工作者坚决支持税务部门依法查处此案，并从中得到教育警示。
+        </n-collapse-item>
+      </n-collapse>
+    </div>
+    <div class="box-item">
       <Popover trigger="click" position="bottom">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
       <Popover trigger="click" position="top">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
       <Popover trigger="click" position="left">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
       <Popover trigger="click" position="right">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
@@ -29,25 +60,33 @@
     <div class="box-item">
       <Popover trigger="hover" position="bottom">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
       <Popover trigger="hover" position="top">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
       <Popover trigger="hover" position="left">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
       <Popover trigger="hover" position="right">
         <template #content>
-          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+          <div>
+            我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
+          </div>
         </template>
         <n-button>按钮</n-button>
       </Popover>
@@ -194,6 +233,8 @@ import TabBody from '@/components/navigation/tabs/TabBody.vue';
 import TabTitle from '@/components/navigation/tabs/TabTitle.vue';
 import TabPane from '@/components/navigation/tabs/TabPane.vue';
 import Popover from '@/components/viewport/popover/Popover.vue';
+import NCollapse from '@/components/layout/collapse/Collapse.vue';
+import NCollapseItem from '@/components/layout/collapse/CollapseItem.vue';
 
 export default {
   components: {
@@ -213,9 +254,12 @@ export default {
     TabTitle,
     TabPane,
     Popover,
+    NCollapse,
+    NCollapseItem,
   },
   data() {
     return {
+      collapseSelected: [1, 2],
       loading: false,
       inputValue: '222',
       // tabs
