@@ -49,16 +49,10 @@ describe('Collapse.vue, CollapseItem.vue', () => {
     });
   });
   describe('event', () => {
-    // test('click title', async (done) => {
-    //   const titles = findTestWrapper(collWrap, 'title');
-    //   const items = findTestWrapper(collWrap, 'items');
-    //   await titles.at(2).trigger('click');
-    //   collWrap.vm.$nextTick(() => {
-    //     console.log(items.at(2).html());
-    //     console.log(collWrap.vm.collapseSelected);
-    //     done();
-    //   }, 0);
-    //   // expect(items.at(2).html()).toBeFalsy();
-    // })
+    it('click title', async () => {
+      const titles = findTestWrapper(collWrap, 'title');
+      await titles.at(2).trigger('click');
+      expect(collWrap.emitted('update:collapseSelected')[0][0]).toEqual([1, 2, 3]);
+    });
   });
 });

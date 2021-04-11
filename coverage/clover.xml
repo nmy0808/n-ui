@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1618115247187" clover="3.2.0">
-  <project timestamp="1618115247187" name="All files">
-    <metrics statements="141" coveredstatements="119" conditionals="58" coveredconditionals="43" methods="59" coveredmethods="51" elements="258" coveredelements="213" complexity="0" loc="141" ncloc="141" packages="6" files="11" classes="11"/>
+<coverage generated="1618165073007" clover="3.2.0">
+  <project timestamp="1618165073007" name="All files">
+    <metrics statements="168" coveredstatements="140" conditionals="66" coveredconditionals="47" methods="74" coveredmethods="62" elements="308" coveredelements="249" complexity="0" loc="168" ncloc="168" packages="7" files="13" classes="13"/>
     <package name="components.feedback.toast">
       <metrics statements="19" coveredstatements="15" conditionals="8" coveredconditionals="5" methods="9" coveredmethods="8"/>
       <file name="Toast.vue" path="/Users/niemingyan/Desktop/demo/n-ui/src/components/feedback/toast/Toast.vue">
@@ -44,6 +44,42 @@
         <line num="98" count="1" type="stmt"/>
         <line num="101" count="1" type="stmt"/>
         <line num="104" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.layout.collapse">
+      <metrics statements="27" coveredstatements="21" conditionals="8" coveredconditionals="4" methods="15" coveredmethods="11"/>
+      <file name="Collapse.vue" path="/Users/niemingyan/Desktop/demo/n-ui/src/components/layout/collapse/Collapse.vue">
+        <metrics statements="19" coveredstatements="13" conditionals="6" coveredconditionals="2" methods="10" coveredmethods="6"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="66" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+      </file>
+      <file name="CollapseItem.vue" path="/Users/niemingyan/Desktop/demo/n-ui/src/components/layout/collapse/CollapseItem.vue">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
       </file>
     </package>
     <package name="components.layout.grid">
@@ -188,7 +224,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="findTestWrapper.js" path="/Users/niemingyan/Desktop/demo/n-ui/src/utils/findTestWrapper.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="2" count="23" type="stmt"/>
+        <line num="2" count="26" type="stmt"/>
       </file>
       <file name="index.js" path="/Users/niemingyan/Desktop/demo/n-ui/src/utils/index.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
