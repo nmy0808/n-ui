@@ -1,6 +1,58 @@
 <template>
   <div id="app">
     <div class="box-item">
+      <Popover trigger="click" position="bottom">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+      <Popover trigger="click" position="top">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+      <Popover trigger="click" position="left">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+      <Popover trigger="click" position="right">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+    </div>
+    <div class="box-item">
+      <Popover trigger="hover" position="bottom">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+      <Popover trigger="hover" position="top">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+      <Popover trigger="hover" position="left">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+      <Popover trigger="hover" position="right">
+        <template #content>
+          <div>我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...</div>
+        </template>
+        <n-button>按钮</n-button>
+      </Popover>
+    </div>
+    <div class="box-item">
       <n-tabs v-model="selected" @tabClick="tabClick">
         <tab-head>
           <n-button slot="tabBarExtraContent">按钮</n-button>
@@ -141,6 +193,7 @@ import TabHead from '@/components/navigation/tabs/TabHead.vue';
 import TabBody from '@/components/navigation/tabs/TabBody.vue';
 import TabTitle from '@/components/navigation/tabs/TabTitle.vue';
 import TabPane from '@/components/navigation/tabs/TabPane.vue';
+import Popover from '@/components/viewport/popover/Popover.vue';
 
 export default {
   components: {
@@ -159,6 +212,7 @@ export default {
     TabBody,
     TabTitle,
     TabPane,
+    Popover,
   },
   data() {
     return {
@@ -188,7 +242,7 @@ export default {
 </script>
 <style lang="scss">
 @import '~@/styles/global.scss';
-.tab-body{
+.tab-body {
   height: 200px;
 }
 .box-item {

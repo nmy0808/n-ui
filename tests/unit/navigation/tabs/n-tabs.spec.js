@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { mount, createWrapper } from '@vue/test-utils';
+import { mount} from '@vue/test-utils';
 import NTab from '@/components/navigation/tabs/Tabs.vue';
 import TabHead from '@/components/navigation/tabs/TabHead.vue';
 import TabBody from '@/components/navigation/tabs/TabBody.vue';
