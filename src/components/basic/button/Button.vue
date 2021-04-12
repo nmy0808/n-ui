@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import NIcon from '@/components/basic/icon/Icon.vue';
+// import NIcon from '@/components/basic/icon/Icon.vue';
+import NIcon from '../icon/Icon.vue';
 
 export default {
   components: { NIcon },
@@ -40,7 +41,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/var.scss';
+// @import '~@/styles/var.scss';
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-icon-size: 1em;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
+$icon-size: 1em;
 @keyframes rot {
   0% {
     transform: rotate(0deg);

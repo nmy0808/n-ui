@@ -16,7 +16,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '//at.alicdn.com/t/font_2449846_sq4i7gxgce.css';
-@import '~@/styles/var.scss';
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-icon-size: 1em;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
+$icon-size: 1em;
 .n-icon {
   font-size: $icon-size;
   // height: $icon-size;

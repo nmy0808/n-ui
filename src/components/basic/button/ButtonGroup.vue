@@ -19,7 +19,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@/styles/var.scss';
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-icon-size: 1em;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
+$icon-size: 1em;
 .n-button-group-container {
   display: inline-flex;
   vertical-align: middle;
@@ -42,7 +51,15 @@ export default {
   }
   button:active {
     position: relative;
-    z-index: -1;
+    border-right-color: $border-color-hover;
+    border-left-color: $border-color-hover;
+    // z-index: -1;
+    &:first-child{
+      border-left-color: $button-active-bg;
+    }
+    &:last-child{
+      border-right-color: $button-active-bg;
+    }
   }
 }
 </style>
