@@ -1,6 +1,12 @@
 <template>
   <div id="app">
     <div class="box-item">
+      <Cascader
+        :cascaderSourced.sync="cascaderSourced"
+        :cascaderSource="cascaderSource"
+      />
+    </div>
+    <div class="box-item">
       {{ collapseSelected }}
       <n-collapse v-model="collapseSelected" :single="true">
         <n-collapse-item name="1">
@@ -235,6 +241,54 @@ import TabPane from '@/components/navigation/tabs/TabPane.vue';
 import Popover from '@/components/viewport/popover/Popover.vue';
 import NCollapse from '@/components/layout/collapse/Collapse.vue';
 import NCollapseItem from '@/components/layout/collapse/CollapseItem.vue';
+import Cascader from '@/components/form/cascader/Cascader.vue';
+
+const cascaderSource = [
+  {
+    label: '一级a',
+    value: '一级a',
+    selected: false,
+    children: [
+      {
+        label: '二级a-a',
+        value: '二级a-a',
+        children: [
+          { label: '三级a-a', value: '三级a-a' },
+          { label: '三级a-b', value: '三级a-b' },
+          { label: '三级a-c', value: '三级a-c' },
+        ],
+      },
+      { label: '二级a-b', value: '二级a-b' },
+      { label: '二级a-c', value: '二级a-c' },
+    ],
+  },
+  {
+    label: '一级b',
+    value: '一级b',
+    children: [
+      { label: '二级b-a', value: '二级b-a' },
+      { label: '二级b-b', value: '二级b-b' },
+      { label: '二级b-c', value: '二级b-c' },
+    ],
+  },
+  {
+    label: '一级c',
+    value: '一级c',
+    children: [
+      { label: '二级c-a', value: '二级c-a' },
+      {
+        label: '二级c-b',
+        value: '二级c-b',
+        children: [
+          { label: '三级c-a', value: '三级c-a' },
+          { label: '三级c-b', value: '三级c-b' },
+          { label: '三级c-c', value: '三级c-c' },
+        ],
+      },
+      { label: '二级c-c', value: '二级c-c' },
+    ],
+  },
+];
 
 export default {
   components: {
@@ -256,6 +310,7 @@ export default {
     Popover,
     NCollapse,
     NCollapseItem,
+    Cascader,
   },
   data() {
     return {
@@ -264,6 +319,8 @@ export default {
       inputValue: '222',
       // tabs
       selected: 'tab2',
+      cascaderSource,
+      cascaderSourced: [],
     };
   },
   methods: {
