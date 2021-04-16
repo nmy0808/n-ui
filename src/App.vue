@@ -1,6 +1,14 @@
 <template>
   <div id="app">
     <div class="box-item">
+      <n-carousel initial-index="b">
+        <n-carousel-item name="a" key="0">1</n-carousel-item>
+        <n-carousel-item name="b" key="1">2</n-carousel-item>
+        <n-carousel-item name="c" key="2">3</n-carousel-item>
+        <n-carousel-item name="d" key="3">4</n-carousel-item>
+      </n-carousel>
+    </div>
+    <div class="box-item">
       <Cascader
         :cascaderSourced.sync="cascaderSourced"
         :cascaderSource="cascaderSource"
@@ -242,6 +250,8 @@ import Popover from '@/components/viewport/popover/Popover.vue';
 import NCollapse from '@/components/layout/collapse/Collapse.vue';
 import NCollapseItem from '@/components/layout/collapse/CollapseItem.vue';
 import Cascader from '@/components/form/cascader/Cascader.vue';
+import NCarousel from '@/components/other/carousel/Carousel.vue';
+import NCarouselItem from '@/components/other/carousel/CarouselItem.vue';
 
 const cascaderSource = [
   {
@@ -311,6 +321,8 @@ export default {
     NCollapse,
     NCollapseItem,
     Cascader,
+    NCarousel,
+    NCarouselItem,
   },
   data() {
     return {
