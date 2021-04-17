@@ -1,21 +1,36 @@
 <template>
-  <div class="carousel-container" :style="{ height: height + 'px' }">
-    <button @click="handlePrev">prev</button>
-    <button @click="handleNext">next</button>
+  <div
+    class="carousel-container"
+    :style="{ height: height + 'px' }"
+    @mouseenter="handleEnter"
+    @mouseleave="handleLeave"
+  >
+    <button class="carousel-btn carousel-btn-prev" @click="handlePrev">
+      <n-icon icon="i-arrow-left" />
+    </button>
+    <button class="carousel-btn carousel-btn-next" @click="handleNext">
+      <n-icon icon="i-arrow-right" />
+    </button>
     <div class="carousel-inner" ref="inner">
       <slot></slot>
     </div>
-
-    {{ maxIndex }}
-    {{ source }}
-    {{ curIndex }}
+    <div class="carousel-indicators">
+      <span
+        @click="setActiveItem(i)"
+        v-for="(it, i) in source"
+        :key="it"
+        :class="{ active: i === curIndex }"
+      ></span>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
+import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
+  components: { NIcon },
   props: {
     height: {
       type: String,
@@ -41,9 +56,29 @@ export default {
       oldIndex: null,
       curIndex: null,
       animationDirection: 'next',
+      autoTimer: null,
     };
   },
   methods: {
+    handleEnter() {
+      clearTimeout(this.autoTimer);
+      this.autoTimer = null;
+    },
+    handleLeave() {
+      this.autoPlay();
+    },
+    autoPlay() {
+      if (this.autoTimer) {
+        return;
+      }
+      this.autoTimer = setInterval(() => {
+        this.handleNext();
+      }, this.interval);
+    },
+    setActiveItem(index) {
+      this.animationDirection = this.curIndex > index ? 'prev' : 'next';
+      this.curIndex = index;
+    },
     handlePrev() {
       this.animationDirection = 'prev';
       let newIndex = this.curIndex - 1;
@@ -66,13 +101,13 @@ export default {
     maxIndex() {
       return this.$slots.default.length - 1;
     },
-    // animationDirection() {
-    //   return (this.oldIndex > this.curIndex ? 'prev' : 'next') || 'next';
-    // },
   },
   mounted() {
+    this.autoPlay();
     // 获取核心数据源
-    const items = this.$children;
+    const items = this.$children.filter(
+      (it) => it.$options.name === 'CarouselItem',
+    );
     this.source = items.map((it) => it.name);
     this.curIndex = this.source.indexOf(this.initialIndex);
   },
@@ -90,8 +125,62 @@ export default {
 
 <style lang="scss" scoped>
 .carousel-container {
-  width: 200px;
-  border: 1px solid;
+  position: relative;
+  width: 100%;
+  background: #f1f1f1;
+  overflow: hidden;
+  .carousel-btn {
+    width: 1.8em;
+    height: 1.8em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0.247);
+    opacity: 0.4;
+    color: white;
+    transition: all 0.3s;
+    cursor: pointer;
+    @media screen and (min-width: 1025px) {
+      &:hover {
+        font-weight: bold;
+        opacity: 1;
+      }
+    }
+    &-prev {
+      left: 1em;
+    }
+    &-next {
+      right: 1em;
+    }
+  }
+  .carousel-indicators {
+    position: relative;
+    left: 0;
+    right: 0;
+    height: 1em;
+    bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      display: block;
+      width: 1.5em;
+      height: 0.3em;
+      margin: 0 0.3em;
+      background: white;
+      opacity: 0.3;
+      z-index: 2;
+      cursor: pointer;
+      &.active {
+        background: white;
+        opacity: 1;
+      }
+    }
+  }
   .carousel-inner {
     position: relative;
     display: flex;

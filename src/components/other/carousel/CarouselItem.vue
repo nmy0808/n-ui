@@ -1,5 +1,10 @@
 <template>
-  <transition :name="animationDirection">
+  <transition
+    :name="animationDirection"
+    mode="out-in"
+    v-on:enter="enter"
+    v-on:after-leave="afterLeave"
+  >
     <div class="carouser-item-container" v-if="show">
       <slot></slot>
     </div>
@@ -8,6 +13,7 @@
 
 <script>
 export default {
+  name: 'CarouselItem',
   inject: ['eventBus'],
   props: {
     name: {
@@ -17,29 +23,41 @@ export default {
   },
   data() {
     return {
-      flag: true,
+      firstRenterLock: true,
       show: false,
       animationDirection: '',
     };
   },
+  methods: {
+    enter() {
+      if (!this.firstRenterLock) {
+        this.eventBus.$emit('update:playlock', true);
+      }
+    },
+    afterLeave() {
+      this.eventBus.$emit('update:playlock', false);
+    },
+  },
   mounted() {
     this.eventBus.$on('update:animationDirection', (animationDirection) => {
-      if (this.flag) {
+      if (this.firstRenterLock) {
         setTimeout(() => {
           this.animationDirection = animationDirection;
-          this.flag = false;
-        }, 0);
+          this.firstRenterLock = false;
+        });
       } else {
         this.animationDirection = animationDirection;
       }
     });
     this.eventBus.$on('update:curindex', (name) => {
       console.log(this.animationDirection);
-      if (this.name === name) {
-        this.show = true;
-      } else {
-        this.show = false;
-      }
+      this.$nextTick(() => {
+        if (this.name === name) {
+          this.show = true;
+        } else {
+          this.show = false;
+        }
+      });
     });
   },
 };
@@ -53,14 +71,13 @@ export default {
   width: 100%;
   height: 100%;
   flex-shrink: 0;
-  color: red;
-  border: 1px solid;
+  background: #ced7e2;
 }
 .next-leave-active,
 .next-enter-active,
 .prev-leave-active,
 .prev-enter-active {
-  transition: all 1s;
+  transition: all 0.3s;
 }
 .next-leave-to {
   transform: translateX(-100%);

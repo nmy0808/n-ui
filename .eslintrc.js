@@ -15,6 +15,7 @@ module.exports = {
   },
 
   rules: {
+    "space-in-parens": 'off',
     'eol-last': 'off',
     'no-console': 'off',
     'no-debugger': 'off',
