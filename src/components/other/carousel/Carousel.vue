@@ -4,11 +4,14 @@
     :style="{ height: height + 'px' }"
     @mouseenter="handleEnter"
     @mouseleave="handleLeave"
+    @touchstart="handleTouchStart"
+    @touchmove="handleTouchMove"
+    @touchend="handleTouchEnd"
   >
-    <button class="carousel-btn carousel-btn-prev" @click="handlePrev">
+    <button class="carousel-btn carousel-btn-prev" @click="prev">
       <n-icon icon="i-arrow-left" />
     </button>
-    <button class="carousel-btn carousel-btn-next" @click="handleNext">
+    <button class="carousel-btn carousel-btn-next" @click="next">
       <n-icon icon="i-arrow-right" />
     </button>
     <div class="carousel-inner" ref="inner">
@@ -57,9 +60,38 @@ export default {
       curIndex: null,
       animationDirection: 'next',
       autoTimer: null,
+      touchStart: {},
+      touchEnd: {},
     };
   },
   methods: {
+    handleTouchStart(e) {
+      this.handleEnter();
+      const { clientX, clientY } = e.touches[0];
+      this.touchStart.clientX = clientX;
+      this.touchStart.clientY = clientY;
+    },
+    handleTouchMove() {
+      this.handleEnter();
+    },
+    handleTouchEnd(e) {
+      const { clientX, clientY } = e.changedTouches[0];
+      this.touchEnd.clientX = clientX;
+      this.touchEnd.clientY = clientY;
+      const result = Math.sqrt(
+        Math.pow(this.touchEnd.clientX - this.touchStart.clientX, 2)
+          + Math.pow(this.touchEnd.clientY - this.touchStart.clientY, 2),
+      );
+      const h = result / (this.touchEnd.clientY - this.touchStart.clientY);
+      if (Math.abs(h) > 2) {
+        if (h > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+      this.handleLeave();
+    },
     handleEnter() {
       clearTimeout(this.autoTimer);
       this.autoTimer = null;
@@ -68,18 +100,18 @@ export default {
       this.autoPlay();
     },
     autoPlay() {
-      if (this.autoTimer) {
+      if (this.autoTimer || !this.autoplay) {
         return;
       }
       this.autoTimer = setInterval(() => {
-        this.handleNext();
+        this.next();
       }, this.interval);
     },
     setActiveItem(index) {
       this.animationDirection = this.curIndex > index ? 'prev' : 'next';
       this.curIndex = index;
     },
-    handlePrev() {
+    prev() {
       this.animationDirection = 'prev';
       let newIndex = this.curIndex - 1;
       if (newIndex < 0) {
@@ -87,7 +119,7 @@ export default {
       }
       this.curIndex = newIndex;
     },
-    handleNext() {
+    next() {
       this.animationDirection = 'next';
       this.oldIndex = this.curIndex;
       let newIndex = this.curIndex + 1;
@@ -113,6 +145,7 @@ export default {
   },
   watch: {
     curIndex(val) {
+      this.$emit('change', val);
       this.eventBus.$emit('update:animationDirection', this.animationDirection);
       this.eventBus.$emit('update:curindex', this.source[val]);
     },
@@ -130,8 +163,8 @@ export default {
   background: #f1f1f1;
   overflow: hidden;
   .carousel-btn {
-    width: 1.8em;
-    height: 1.8em;
+    width: 2.5em;
+    height: 2.5em;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="box-item">
-      <n-carousel initial-index="b">
+      <n-carousel initial-index="b" @change="changeHn">
         <n-carousel-item name="a" key="0">1</n-carousel-item>
         <n-carousel-item name="b" key="1">2</n-carousel-item>
         <n-carousel-item name="c" key="2">3</n-carousel-item>
@@ -336,6 +336,9 @@ export default {
     };
   },
   methods: {
+    changeHn(i) {
+      console.log(i);
+    },
     tabClick(e) {
       console.log(e);
       this.$toast('回调哦!');
