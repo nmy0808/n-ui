@@ -50,7 +50,6 @@ export default {
       }
     });
     this.eventBus.$on('update:curindex', (name) => {
-      console.log(this.animationDirection);
       this.$nextTick(() => {
         if (this.name === name) {
           this.show = true;

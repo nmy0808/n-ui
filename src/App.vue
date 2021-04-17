@@ -1,7 +1,21 @@
 <template>
   <div id="app">
     <div class="box-item">
-      <n-carousel initial-index="b" @change="changeHn">
+      <n-menu v-model="selectedIndex">
+        <n-menu-item index="1">首页</n-menu-item>
+        <n-sub-menu index="2">
+          <template #title>
+            关于
+          </template>
+          <n-menu-item index="2-1">企业文化</n-menu-item>
+          <n-menu-item index="2-2">开发团队</n-menu-item>
+          <n-menu-item index="2-3">联系方式</n-menu-item>
+        </n-sub-menu>
+        <n-menu-item index="3">联系</n-menu-item>
+      </n-menu>
+    </div>
+    <div class="box-item">
+      <n-carousel initial-index="b">
         <n-carousel-item name="a" key="0">1</n-carousel-item>
         <n-carousel-item name="b" key="1">2</n-carousel-item>
         <n-carousel-item name="c" key="2">3</n-carousel-item>
@@ -252,6 +266,9 @@ import NCollapseItem from '@/components/layout/collapse/CollapseItem.vue';
 import Cascader from '@/components/form/cascader/Cascader.vue';
 import NCarousel from '@/components/other/carousel/Carousel.vue';
 import NCarouselItem from '@/components/other/carousel/CarouselItem.vue';
+import NMenu from '@/components/navigation/navmenu/NavMenu.vue';
+import NSubMenu from '@/components/navigation/navmenu/SubMenu.vue';
+import NMenuItem from '@/components/navigation/navmenu/MenuItem.vue';
 
 const cascaderSource = [
   {
@@ -323,9 +340,13 @@ export default {
     Cascader,
     NCarousel,
     NCarouselItem,
+    NMenu,
+    NSubMenu,
+    NMenuItem,
   },
   data() {
     return {
+      selectedIndex: ['1'],
       collapseSelected: [1, 2],
       loading: false,
       inputValue: '222',
@@ -336,9 +357,6 @@ export default {
     };
   },
   methods: {
-    changeHn(i) {
-      console.log(i);
-    },
     tabClick(e) {
       console.log(e);
       this.$toast('回调哦!');
