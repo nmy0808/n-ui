@@ -58,6 +58,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .navmenu-container {
+  font-size: 16px;
   display: flex;
   position: relative;
   z-index: 3;

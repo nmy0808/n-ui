@@ -4,12 +4,16 @@
       <n-menu v-model="selectedIndex">
         <n-menu-item index="1">首页</n-menu-item>
         <n-sub-menu index="2">
-          <template #title>
-            关于
-          </template>
+          <template #title> 关于 </template>
           <n-menu-item index="2-1">企业文化</n-menu-item>
           <n-menu-item index="2-2">开发团队</n-menu-item>
           <n-menu-item index="2-3">联系方式</n-menu-item>
+          <n-sub-menu index="2-4">
+            <template #title> 更多 </template>
+            <n-menu-item index="2-4-1">更多1</n-menu-item>
+            <n-menu-item index="2-4-2">更多2</n-menu-item>
+            <n-menu-item index="2-4-3">更多3</n-menu-item>
+          </n-sub-menu>
         </n-sub-menu>
         <n-menu-item index="3">联系</n-menu-item>
       </n-menu>
@@ -346,7 +350,7 @@ export default {
   },
   data() {
     return {
-      selectedIndex: ['1'],
+      selectedIndex: ['2-4-1'],
       collapseSelected: [1, 2],
       loading: false,
       inputValue: '222',
