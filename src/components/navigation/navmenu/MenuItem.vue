@@ -1,7 +1,7 @@
 <template>
   <div
     class="menu-item-container"
-    :class="{ active: active }"
+    :class="{ active: active, vertical }"
     @click="handleChangeIndex"
   >
     <slot></slot>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  inject: ['eventBus'],
+  inject: ['eventBus', 'vertical'],
   name: 'MenuItem',
   props: {
     index: {
@@ -52,22 +52,28 @@ export default {
 
 <style lang="scss" scoped>
 .menu-item-container {
-  width: 8em;
+  width: 100%;
   user-select: none;
   cursor: pointer;
-  text-align: center;
   height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
   background: white;
-  &.active {
+  &.active:not(.vertical) {
     color: #3b73fb;
     border-bottom: 1px solid #3b73fb;
+  }
+  &.active {
+    color: #3b73fb;
+    background: #efefef;
   }
   &:hover {
     color: #3b73fb;
     background: #f1f1f1;
+  }
+  &.vertical {
+    justify-content: left;
   }
 }
 </style>
