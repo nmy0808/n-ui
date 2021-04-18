@@ -1,8 +1,8 @@
 <template>
-  <div class="submenu-container" v-clickOutside="handleClose">
+  <div class="submenu-container" @[eventLeave]="handleLeave">
     <div
       class="submenu-title"
-      @click="show = !show"
+      @[eventEnter]="show = !show"
       :class="{ active, open, 'none-border': noneBorder, vertical }"
     >
       <slot name="title"></slot>
@@ -23,21 +23,21 @@
         </div>
       </transition>
     </template>
-    <div v-else class="submenu-body" v-show="show">
-      <slot></slot>
-    </div>
+    <template v-else>
+      <div class="submenu-body" v-show="show">
+        <slot></slot>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import gsap from 'gsap';
-import { clickOutside } from '../../../directives';
 import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
   inject: ['eventBus', 'vertical'],
   name: 'SubMenu',
-  directives: { clickOutside },
   components: { NIcon },
   data() {
     return {
@@ -53,6 +53,9 @@ export default {
     },
   },
   methods: {
+    handleLeave() {
+      this.show = false;
+    },
     enter(el, done) {
       const ele = el;
       const { height } = getComputedStyle(el);
@@ -85,10 +88,19 @@ export default {
     noneBorder() {
       return this.$parent.$options.name !== 'NavMenu';
     },
+    eventEnter() {
+      return this.vertical ? 'click' : 'mouseenter';
+    },
+    eventLeave() {
+      return this.vertical ? null : 'mouseleave';
+    },
   },
   mounted() {
     this.eventBus.$on('delete:active', () => {
       this.active = false;
+    });
+    this.eventBus.$on('delete:show', () => {
+      this.show = false;
     });
   },
   watch: {
@@ -154,12 +166,12 @@ $subMenu-width: 100%;
     }
   }
   .submenu-body:not(.vertical) {
+    box-shadow: 1px 1px 1px rgba(31, 31, 31, 0.103);
     width: 100%;
     position: absolute;
     left: 0;
     top: 100%;
     z-index: 3;
-    // font-size: 14px;
     .submenu-container {
       width: 100%;
     }
@@ -169,10 +181,8 @@ $subMenu-width: 100%;
   }
   .submenu-container .submenu-body.vertical {
     text-indent: 2.5em;
-    // font-size: 14px;
   }
   .submenu-container .submenu-body:not(.vertical) {
-    // font-size: 14px;
     position: absolute;
     width: 100%;
     left: 100%;
@@ -190,18 +200,5 @@ $subMenu-width: 100%;
     border: none !important;
     position: relative;
   }
-}
-</style>
-<style scoped>
-.z-leave-active,
-.z-enter-active {
-  transition: all 0.3s;
-}
-.z-leave-to,
-.z-enter {
-  opacity: 0;
-}
-.z-move {
-  transition: transform 0.2s;
 }
 </style>

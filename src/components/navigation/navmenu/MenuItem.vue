@@ -37,6 +37,9 @@ export default {
     handleChangeIndex() {
       // 清空所有subMenu的激活状态
       this.eventBus.$emit('delete:active');
+      if (!this.vertical) {
+        this.eventBus.$emit('delete:show');
+      }
       this.eventBus.$emit('update:selectedIndex', this.index);
     },
     setSubMenuState() {
