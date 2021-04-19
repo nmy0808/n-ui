@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <div class="box-item">
+      <NPager :total="50" :current.sync="curPage" />
+    </div>
+    <div class="box-item">
       <n-menu v-model="selectedIndex">
         <n-menu-item index="1">首页</n-menu-item>
         <n-sub-menu index="2">
@@ -301,6 +304,7 @@ import NCarouselItem from '@/components/other/carousel/CarouselItem.vue';
 import NMenu from '@/components/navigation/navmenu/NavMenu.vue';
 import NSubMenu from '@/components/navigation/navmenu/SubMenu.vue';
 import NMenuItem from '@/components/navigation/navmenu/MenuItem.vue';
+import NPager from '@/components/navigation/pager/Pager.vue';
 
 const cascaderSource = [
   {
@@ -376,9 +380,11 @@ export default {
     NMenu,
     NSubMenu,
     NMenuItem,
+    NPager,
   },
   data() {
     return {
+      curPage: 5,
       selectedIndex: ['2-4-1'],
       collapseSelected: [1, 2],
       loading: false,
