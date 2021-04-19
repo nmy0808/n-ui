@@ -68,7 +68,7 @@ export default {
       ]
         .filter(
           (element, index, self) => self.indexOf(element) === index && element > 0
-          && element <= total,
+            && element <= total,
         )
         .sort((a, b) => a - b)
         .reduce((pre, cur, i, arr) => {
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     handleSwitchPage(page) {
-      if (page >= 1 && page <= this.total) {
+      if (page >= 1 && page <= this.total && page !== this.current) {
         this.$emit('change', page);
         this.$emit('update:current', page);
       }
@@ -129,6 +129,7 @@ export default {
     &.active {
       background: #3b73fb;
       color: white;
+      cursor: default;
     }
     &.disabled {
       background: #f1f1f196;
