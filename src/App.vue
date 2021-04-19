@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <div class="box-item">
+      <NTable
+        :columns="columns"
+        :dataSource="dataSource"
+        @changeItem="changeItem"
+      />
+    </div>
+    <div class="box-item">
       <NPager :total="50" :current.sync="curPage" />
     </div>
     <div class="box-item">
@@ -49,7 +56,7 @@
       </n-menu>
     </div>
     <div class="box-item">
-      <n-carousel initial-index="b">
+      <n-carousel initial-index="b" :autoplay="false">
         <n-carousel-item name="a" key="0">1</n-carousel-item>
         <n-carousel-item name="b" key="1">2</n-carousel-item>
         <n-carousel-item name="c" key="2">3</n-carousel-item>
@@ -305,6 +312,7 @@ import NMenu from '@/components/navigation/navmenu/NavMenu.vue';
 import NSubMenu from '@/components/navigation/navmenu/SubMenu.vue';
 import NMenuItem from '@/components/navigation/navmenu/MenuItem.vue';
 import NPager from '@/components/navigation/pager/Pager.vue';
+import NTable from '@/components/viewport/table/Table.vue';
 
 const cascaderSource = [
   {
@@ -381,9 +389,23 @@ export default {
     NSubMenu,
     NMenuItem,
     NPager,
+    NTable,
   },
   data() {
     return {
+      columns: [
+        { text: '姓名', field: 'name' },
+        { text: '年龄', field: 'age' },
+      ],
+      dataSource: [
+        { id: 1, name: 'a', age: 18 },
+        { id: 2, name: 'b', age: 18 },
+        { id: 3, name: 'c', age: 18 },
+        { id: 4, name: 'd', age: 18 },
+        { id: 5, name: 'e', age: 18 },
+        { id: 6, name: 'f', age: 18 },
+        { id: 7, name: 'g', age: 18 },
+      ],
       curPage: 5,
       selectedIndex: ['2-4-1'],
       collapseSelected: [1, 2],
@@ -396,6 +418,9 @@ export default {
     };
   },
   methods: {
+    changeItem(data) {
+      console.log(data);
+    },
     tabClick(e) {
       console.log(e);
       this.$toast('回调哦!');

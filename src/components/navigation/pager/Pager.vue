@@ -97,6 +97,7 @@ export default {
 
 <style lang="scss" scoped>
 .pager-container {
+  user-select: none;
   display: inline-flex;
   align-items: center;
   &.pager-none {
