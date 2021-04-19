@@ -1,2 +1,2 @@
 export { findTestWrapper } from './findTestWrapper';
-export { validate } from './validate';
+export { Validator } from './Validator';

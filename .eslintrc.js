@@ -15,6 +15,7 @@ module.exports = {
   },
 
   rules: {
+    "class-methods-use-this": 'off',
     "import/prefer-default-export": 'off',
     "no-use-before-define": 'off',
     "no-restricted-properties": 'off',
