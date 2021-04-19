@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { validate } from '@/utils';
 
 describe('validate', () => {
@@ -7,7 +8,7 @@ describe('validate', () => {
     };
     const rules = [
       {
-        key: 'email',
+        name: 'email',
         required: true,
         pattern: /^.+@.+$/g,
       },
@@ -20,7 +21,7 @@ describe('validate', () => {
     };
     const rules = [
       {
-        key: 'email',
+        name: 'email',
         required: true,
         // pattern: '',
       },
@@ -33,7 +34,7 @@ describe('validate', () => {
     };
     const rules = [
       {
-        key: 'email',
+        name: 'email',
         required: true,
         pattern: 'email',
       },
@@ -46,7 +47,7 @@ describe('validate', () => {
     };
     const rules = [
       {
-        key: 'email',
+        name: 'email',
         required: true,
         pattern: /^.+@.+$/g,
       },
@@ -59,12 +60,51 @@ describe('validate', () => {
     };
     const rules = [
       {
-        key: 'email',
+        name: 'email',
         required: true,
         pattern: /^.+@.+$/g,
         minLength: 2,
       },
     ];
     expect(validate(date, rules).email.minLength).toBeTruthy();
+  });
+  it('测试如果不存在的检查器是否会报错', () => {
+    const date = {
+      email: 'd',
+    };
+    const rules = [
+      {
+        name: 'email',
+        required: true,
+        pattern: /^.+@.+$/g,
+        minLength: 2,
+        test: 111,
+      },
+    ];
+    const fn = () => {
+      validate(date, rules);
+    };
+    expect(fn).toThrowError();
+  });
+  it('用户自己添加检查器', () => {
+    const date = {
+      email: 'd',
+    };
+    const rules = [
+      {
+        name: 'email',
+        required: true,
+        pattern: /^.+@.+$/g,
+        minLength: 2,
+        repeat: /(\d)\1/g,
+      },
+    ];
+    validate.repeat = function (value, repeat) {
+      const regRes = repeat.test(value);
+      if (!regRes) {
+        return '检测到没有两个相同的字符';
+      }
+    };
+    expect(validate(date, rules).email.repeat).toMatch('检测到没有两个相同的字符');
   });
 });

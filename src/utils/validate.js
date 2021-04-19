@@ -9,39 +9,61 @@ export function validate(dates, rules) {
   const dateObj = dates;
   const ruleArr = rules;
   ruleArr.forEach((rule) => {
-    const { key } = rule;
-    const value = dateObj[key];
-    let { pattern } = rule;
-    const minLength = rule.minLength || 0;
+    const { name } = rule;
+    const value = dateObj[name];
     // 验证必填 (优先级最高)
     if (rule.required) {
-      if (!value && value !== 0) {
-        error[key] = { required: '必填' };
+      const errorMsg = validate.required(value);
+      if (errorMsg) {
+        ensureObject(error, name);
+        error[name].required = errorMsg;
         return;
       }
     }
-    // 验证pattern
-    if (pattern) {
-      if (pattern === 'email') {
-        pattern = /.+@.+/g;
+    // 遍历用户制定的所有规则
+    const validateKeys = Object.keys(rule).filter((ruleName) => ruleName !== 'name' && ruleName !== 'required');
+    validateKeys.forEach((ruleName) => {
+      if (!validate[ruleName]) {
+        throw new Error(`没有该检查器: ${ruleName}`);
+      } else {
+        const errorMsg = validate[ruleName](value, rule[ruleName]);
+        if (errorMsg) {
+          ensureObject(error, name);
+          error[name][ruleName] = errorMsg;
+        }
       }
-      const regRes = pattern.test(value);
-      if (!regRes) {
-        ensureObject(error, key);
-        error[key].pattern = '不符合规则';
-      }
-    }
-
-    // 验证最小值
-    if (minLength > 0) {
-      if (value.length < minLength) {
-        ensureObject(error, minLength);
-        error[key].minLength = '该字符串长度不合法';
-      }
-    }
+    });
   });
   return error;
 }
+// 预定义的规则
+validate.required = function (value) {
+  if (!value && value !== 0) {
+    return '必填';
+  }
+  return null;
+};
+validate.pattern = (value, pattern) => {
+  let reg = pattern;
+  if (pattern === 'email') {
+    reg = /.+@.+/g;
+  }
+  if (pattern === 'phone') {
+    reg = /^\d{11}$/g;
+  }
+  const regRes = reg.test(value);
+  if (!regRes) {
+    return '格式不正确';
+  }
+  return null;
+};
+validate.minLength = (value, minLength) => {
+  if (value.length < minLength) {
+    return '字体太短';
+  }
+  return null;
+};
+// 确保该key的值是对象
 function ensureObject(obj, key) {
   const objCopy = obj;
   const keyCopy = key;
