@@ -3,8 +3,9 @@
     <div class="box-item">
       <NTable
         :columns="columns"
-        :dataSource="dataSource"
-        @changeItem="changeItem"
+        :data-source="dataSource"
+        :selected-items.sync="selectedItems"
+        :orderBy.sync="orderBy"
       />
     </div>
     <div class="box-item">
@@ -393,6 +394,11 @@ export default {
   },
   data() {
     return {
+      orderBy: {
+        name: true,
+        age: 'desc',
+      },
+      selectedItems: [],
       columns: [
         { text: '姓名', field: 'name' },
         { text: '年龄', field: 'age' },
