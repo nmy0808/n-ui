@@ -6,6 +6,10 @@
         :data-source="dataSource"
         :selected-items.sync="selectedItems"
         :orderBy.sync="orderBy"
+        :loading="tableLoading"
+        height="500px"
+        checkable
+        expended
       />
     </div>
     <div class="box-item">
@@ -394,23 +398,49 @@ export default {
   },
   data() {
     return {
+      tableLoading: false,
       orderBy: {
         name: true,
         age: 'desc',
       },
       selectedItems: [],
       columns: [
-        { text: '姓名', field: 'name' },
-        { text: '年龄', field: 'age' },
+        { text: '姓名', field: 'name', width: '100px' },
+        { text: '年龄', field: 'age', width: '100px' },
       ],
       dataSource: [
-        { id: 1, name: 'a', age: 18 },
-        { id: 2, name: 'b', age: 18 },
-        { id: 3, name: 'c', age: 18 },
-        { id: 4, name: 'd', age: 18 },
-        { id: 5, name: 'e', age: 18 },
-        { id: 6, name: 'f', age: 18 },
-        { id: 7, name: 'g', age: 18 },
+        {
+          id: 1, name: 'a', age: 18, description: '测试...',
+        },
+        {
+          id: 2, name: 'b', age: 18, description: '测试...',
+        },
+        {
+          id: 3, name: 'c', age: 18, description: '测试...',
+        },
+        {
+          id: 4, name: 'd', age: 18, description: '测试...',
+        },
+        {
+          id: 5, name: 'e', age: 18, description: '测试...',
+        },
+        {
+          id: 6, name: 'f', age: 18, description: '测试...',
+        },
+        {
+          id: 7, name: 'g', age: 18, description: '测试...',
+        },
+        {
+          id: 8, name: 'a', age: 18, description: '测试...',
+        },
+        {
+          id: 9, name: 'b', age: 18, description: '测试...',
+        },
+        { id: 10, name: 'c', age: 18 },
+        { id: 11, name: 'd', age: 18 },
+        { id: 12, name: 'e', age: 18 },
+        { id: 13, name: 'f', age: 18 },
+        { id: 14, name: 'g', age: 18 },
       ],
       curPage: 5,
       selectedIndex: ['2-4-1'],
