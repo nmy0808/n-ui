@@ -2,7 +2,6 @@
   <div id="app">
     <div class="box-item">
       <NTable
-        :columns="columns"
         :data-source="dataSource"
         :selected-items.sync="selectedItems"
         :orderBy.sync="orderBy"
@@ -10,7 +9,20 @@
         height="500px"
         checkable
         expended
-      />
+      >
+        <n-table-column text="姓名" field="name" width="100px">
+          <template slot-scope="scope">
+            <a href="#">{{ scope.value }}</a>
+          </template>
+        </n-table-column>
+        <n-table-column text="年龄" field="age" />
+        <n-table-column text="操作" width="100px" >
+          <template slot-scope="scope">
+            <button @click="handleEdit(scope.item)">修改</button>
+            <button @click="handleEdit(scope.item)">删除</button>
+          </template>
+        </n-table-column>
+      </NTable>
     </div>
     <div class="box-item">
       <NPager :total="50" :current.sync="curPage" />
@@ -318,6 +330,7 @@ import NSubMenu from '@/components/navigation/navmenu/SubMenu.vue';
 import NMenuItem from '@/components/navigation/navmenu/MenuItem.vue';
 import NPager from '@/components/navigation/pager/Pager.vue';
 import NTable from '@/components/viewport/table/Table.vue';
+import NTableColumn from '@/components/viewport/table/TableColumn.vue';
 
 const cascaderSource = [
   {
@@ -395,6 +408,7 @@ export default {
     NMenuItem,
     NPager,
     NTable,
+    NTableColumn,
   },
   data() {
     return {
@@ -404,37 +418,60 @@ export default {
         age: 'desc',
       },
       selectedItems: [],
-      columns: [
-        { text: '姓名', field: 'name', width: '100px' },
-        { text: '年龄', field: 'age', width: '100px' },
-      ],
       dataSource: [
         {
-          id: 1, name: 'a', age: 18, description: '测试...',
+          id: 1,
+          name: 'a',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 2, name: 'b', age: 18, description: '测试...',
+          id: 2,
+          name: 'b',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 3, name: 'c', age: 18, description: '测试...',
+          id: 3,
+          name: 'c',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 4, name: 'd', age: 18, description: '测试...',
+          id: 4,
+          name: 'd',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 5, name: 'e', age: 18, description: '测试...',
+          id: 5,
+          name: 'e',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 6, name: 'f', age: 18, description: '测试...',
+          id: 6,
+          name: 'f',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 7, name: 'g', age: 18, description: '测试...',
+          id: 7,
+          name: 'g',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 8, name: 'a', age: 18, description: '测试...',
+          id: 8,
+          name: 'a',
+          age: 18,
+          description: '测试...',
         },
         {
-          id: 9, name: 'b', age: 18, description: '测试...',
+          id: 9,
+          name: 'b',
+          age: 18,
+          description: '测试...',
         },
         { id: 10, name: 'c', age: 18 },
         { id: 11, name: 'd', age: 18 },
@@ -454,6 +491,12 @@ export default {
     };
   },
   methods: {
+    handleEdit(item) {
+      console.log('编辑:', item);
+    },
+    handleDelete(item) {
+      console.log('删除:', item);
+    },
     changeItem(data) {
       console.log(data);
     },

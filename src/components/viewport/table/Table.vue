@@ -21,8 +21,8 @@
             </th>
             <th v-if="numberVisible">#</th>
             <th
-              :style="{ width: i < columns.length - 1 ? column.width : 'auto' }"
-              v-for="(column, i) in columns"
+              :style="{ width: column.width }"
+              v-for="column in columns"
               :key="column.field"
             >
               <div class="table-th">
@@ -71,15 +71,32 @@
                 />
               </td>
               <td v-if="numberVisible">{{ i + 1 }}</td>
-              <template v-for="(column, i) in columns">
-                <td
-                  :key="column.field"
-                  :style="{
-                    width: i < columns.length - 1 ? column.width : 'auto',
-                  }"
-                >
-                  {{ item[column.field] }}
-                </td>
+              <template v-for="column in columns">
+                <template v-if="column.render">
+                  <td
+                    :key="column.field"
+                    :style="{
+                      width: column.width,
+                    }"
+                  >
+                    <vnodes
+                      :key="column.field"
+                      :vnodes="
+                        column.render({ value: item[column.field], item, $index:i })
+                      "
+                    />
+                  </td>
+                </template>
+                <template v-else>
+                  <td
+                    :key="column.field"
+                    :style="{
+                      width: column.width,
+                    }"
+                  >
+                    {{ item[column.field] }}
+                  </td>
+                </template>
               </template>
             </tr>
             <transition :key="`${item.id}-desc`">
@@ -106,11 +123,18 @@
 import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
-  components: { NIcon },
+  components: {
+    NIcon,
+    vnodes: {
+      functional: true,
+      render: (h, ctx) => ctx.props.vnodes,
+    },
+  },
   name: 'NTable',
   data() {
     return {
       expendeds: [],
+      columns: [],
     };
   },
   props: {
@@ -136,10 +160,6 @@ export default {
       type: Array,
       default: () => [],
     },
-    columns: {
-      type: Array,
-      required: true,
-    },
     dataSource: {
       type: Array,
       required: true,
@@ -162,6 +182,19 @@ export default {
     },
   },
   methods: {
+    // slotVisible() {
+    //   let res = false;
+    //   const tds = this.$refs.td_slot;
+    //   tds &&
+    //     tds.forEach((td) => {
+    //       if (td.children.length > 0) {
+    //         res = true;
+    //       }
+    //     });
+    //   if (!res) {
+    //     tds.forEach((td) => td.remove());
+    //   }
+    // },
     includeExpended(id) {
       return this.expendeds.includes(id);
     },
@@ -243,6 +276,15 @@ export default {
     },
   },
   mounted() {
+    this.$slots.default.forEach((vNode) => {
+      const { width, text, field } = vNode.data.attrs;
+      const render = vNode.data.scopedSlots && vNode.data.scopedSlots.default;
+      this.columns.push({
+        width, text, field, render,
+      });
+    });
+
+    //
     const target = this.$refs.thead_target;
     const NewTable = this.$refs.table.cloneNode(false);
     const NewThead = document.createElement('thead');
@@ -253,16 +295,6 @@ export default {
     NewTable.appendChild(NewThead);
     target.appendChild(NewTable);
     thead.remove();
-    //
-    // 设置thead内th的宽
-    // const tbodyTr = this.$refs.tbody.querySelector('tr') || {};
-    // const tbodyTds  = tbodyTr.children;
-    // if(tbodyTds){
-    //   Array.from(tbodyTds).forEach((td,i)=>{
-    //     const {width} = td.getBoundingClientRect();
-    //     ths[i].style.width = `${width}px`;
-    //   })
-    // }
   },
 };
 </script>
@@ -273,6 +305,10 @@ $gray: #f4f3f4;
   position: relative;
   background: white;
   .table-scroll-container {
+    &::-webkit-scrollbar {
+      // position: relative;
+      // left: 1px;
+    }
     position: relative;
     overflow: auto;
   }
