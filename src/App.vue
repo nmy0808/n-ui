@@ -6,7 +6,7 @@
         :selected-items.sync="selectedItems"
         :orderBy.sync="orderBy"
         :loading="tableLoading"
-        height="500px"
+        height="500"
         checkable
         expended
       >
@@ -16,10 +16,10 @@
           </template>
         </n-table-column>
         <n-table-column text="年龄" field="age" />
-        <n-table-column text="操作" width="100px" >
+        <n-table-column text="操作" width="130px" >
           <template slot-scope="scope">
-            <button @click="handleEdit(scope.item)">修改</button>
-            <button @click="handleEdit(scope.item)">删除</button>
+            <n-button @click="handleEdit(scope.item)">修改</n-button>
+            <n-button @click="handleEdit(scope.item)">删除</n-button>
           </template>
         </n-table-column>
       </NTable>
@@ -524,7 +524,6 @@ export default {
 }
 .box-item {
   width: 80%;
-  padding: 20px;
 }
 .row {
   height: 200px;

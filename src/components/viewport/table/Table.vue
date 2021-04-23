@@ -1,7 +1,11 @@
 <template>
-  <div class="table-container">
+  <div class="table-container" :height="height + 'px'">
     <div class="thead-move-target" ref="thead_target"></div>
-    <div class="table-scroll-container" :style="{ height }">
+    <n-scroll
+      class="table-scroll-container"
+      :height="scrollHeight"
+      ref="scroll"
+    >
       <table class="striped bordered" ref="table">
         <thead ref="thead">
           <tr ref="thead_tr">
@@ -79,10 +83,15 @@
                       width: column.width,
                     }"
                   >
+                    <slot></slot>
                     <vnodes
                       :key="column.field"
                       :vnodes="
-                        column.render({ value: item[column.field], item, $index:i })
+                        column.render({
+                          value: item[column.field],
+                          item,
+                          $index: i,
+                        })
                       "
                     />
                   </td>
@@ -112,7 +121,7 @@
           </template>
         </tbody>
       </table>
-    </div>
+    </n-scroll>
     <div class="table-loading" v-show="loading">
       <n-icon icon="i-loading" />
     </div>
@@ -121,9 +130,11 @@
 
 <script>
 import NIcon from '../../basic/icon/Icon.vue';
+import NScroll from '../scroll/Scroll.vue';
 
 export default {
   components: {
+    NScroll,
     NIcon,
     vnodes: {
       functional: true,
@@ -133,6 +144,7 @@ export default {
   name: 'NTable',
   data() {
     return {
+      scrollHeight: 0,
       expendeds: [],
       columns: [],
     };
@@ -182,19 +194,6 @@ export default {
     },
   },
   methods: {
-    // slotVisible() {
-    //   let res = false;
-    //   const tds = this.$refs.td_slot;
-    //   tds &&
-    //     tds.forEach((td) => {
-    //       if (td.children.length > 0) {
-    //         res = true;
-    //       }
-    //     });
-    //   if (!res) {
-    //     tds.forEach((td) => td.remove());
-    //   }
-    // },
     includeExpended(id) {
       return this.expendeds.includes(id);
     },
@@ -276,11 +275,16 @@ export default {
     },
   },
   mounted() {
+    console.log(this.$refs.scroll);
+    console.log(this.$refs.scroll.directives);
     this.$slots.default.forEach((vNode) => {
       const { width, text, field } = vNode.data.attrs;
       const render = vNode.data.scopedSlots && vNode.data.scopedSlots.default;
       this.columns.push({
-        width, text, field, render,
+        width,
+        text,
+        field,
+        render,
       });
     });
 
@@ -295,6 +299,8 @@ export default {
     NewTable.appendChild(NewThead);
     target.appendChild(NewTable);
     thead.remove();
+    //
+    this.scrollHeight = parseFloat(this.height) - this.$refs.thead_target.offsetHeight;
   },
 };
 </script>
@@ -310,7 +316,7 @@ $gray: #f4f3f4;
       // left: 1px;
     }
     position: relative;
-    overflow: auto;
+    // overflow: hidden;
   }
   table {
     text-align: left;
