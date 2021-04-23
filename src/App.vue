@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <div style="height: 400px; border: 1px solid"></div>
+    <div class="box-item">
+      <n-sticky :distance="60">
+        <div style="width: 300px; height: 100px; background: teal">sticky</div>
+      </n-sticky>
+    </div>
     <div class="box-item">
       <NTable
         :data-source="dataSource"
@@ -16,7 +22,7 @@
           </template>
         </n-table-column>
         <n-table-column text="年龄" field="age" />
-        <n-table-column text="操作" width="130px" >
+        <n-table-column text="操作" width="130px">
           <template slot-scope="scope">
             <n-button @click="handleEdit(scope.item)">修改</n-button>
             <n-button @click="handleEdit(scope.item)">删除</n-button>
@@ -331,6 +337,7 @@ import NMenuItem from '@/components/navigation/navmenu/MenuItem.vue';
 import NPager from '@/components/navigation/pager/Pager.vue';
 import NTable from '@/components/viewport/table/Table.vue';
 import NTableColumn from '@/components/viewport/table/TableColumn.vue';
+import NSticky from '@/components/navigation/sticky/Sticky.vue';
 
 const cascaderSource = [
   {
@@ -381,6 +388,7 @@ const cascaderSource = [
 
 export default {
   components: {
+    NSticky,
     NIcon,
     NButton,
     NButtonGroup,

@@ -1,5 +1,9 @@
 <script>
-export default {};
+export default {
+  render() {
+    return null;
+  },
+};
 </script>
 
 <style>
