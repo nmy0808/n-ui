@@ -1,6 +1,18 @@
 <template>
   <div id="app">
-    <div style="height: 400px; border: 1px solid"></div>
+    <div class="box-item">
+      <NUploader
+        method="post"
+        action="http://101.132.72.36:5100/api/upload"
+        accept="image/*"
+        name="imagefile"
+        :parse-response="parseResponse"
+        :file-list.sync="fileList"
+      >
+        <n-button icon="i-upload1">上传</n-button>
+        <div style="font-size:12px; margin-top: 1em;">只能上传jpg/png文件，且不超过2mb</div>
+      </NUploader>
+    </div>
     <div class="box-item">
       <n-sticky :distance="60">
         <div style="width: 300px; height: 100px; background: teal">sticky</div>
@@ -338,6 +350,7 @@ import NPager from '@/components/navigation/pager/Pager.vue';
 import NTable from '@/components/viewport/table/Table.vue';
 import NTableColumn from '@/components/viewport/table/TableColumn.vue';
 import NSticky from '@/components/navigation/sticky/Sticky.vue';
+import NUploader from '@/components/other/upload/Uploader.vue';
 
 const cascaderSource = [
   {
@@ -388,6 +401,7 @@ const cascaderSource = [
 
 export default {
   components: {
+    NUploader,
     NSticky,
     NIcon,
     NButton,
@@ -420,6 +434,9 @@ export default {
   },
   data() {
     return {
+      fileList: [
+        { url: 'http://images.yuanjin.tech/FttC5_iCXdclDimGUFu42ng8IdGY' },
+      ],
       tableLoading: false,
       orderBy: {
         name: true,
@@ -499,6 +516,9 @@ export default {
     };
   },
   methods: {
+    parseResponse(res) {
+      return JSON.parse(res).path;
+    },
     handleEdit(item) {
       console.log('编辑:', item);
     },
@@ -551,4 +571,7 @@ export default {
   border: 1px solid;
   min-height: 40px;
 }
+</style>
+<style lang="scss" scoped>
+// 上传组件
 </style>
