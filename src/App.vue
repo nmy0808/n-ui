@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div class="box-item" style="height: 500px">
+      <NDatapicker :defaultDate.sync="defaultDate" />
+    </div>
     <div class="box-item">
       <NUploader
         method="post"
@@ -10,7 +13,9 @@
         :file-list.sync="fileList"
       >
         <n-button icon="i-upload1">上传</n-button>
-        <div style="font-size:12px; margin-top: 1em;">只能上传jpg/png文件，且不超过2mb</div>
+        <div style="font-size: 12px; margin-top: 1em">
+          只能上传jpg/png文件，且不超过2mb
+        </div>
       </NUploader>
     </div>
     <div class="box-item">
@@ -351,6 +356,7 @@ import NTable from '@/components/viewport/table/Table.vue';
 import NTableColumn from '@/components/viewport/table/TableColumn.vue';
 import NSticky from '@/components/navigation/sticky/Sticky.vue';
 import NUploader from '@/components/other/upload/Uploader.vue';
+import NDatapicker from '@/components/form/datapicker/Datapicker.vue';
 
 const cascaderSource = [
   {
@@ -401,6 +407,7 @@ const cascaderSource = [
 
 export default {
   components: {
+    NDatapicker,
     NUploader,
     NSticky,
     NIcon,
@@ -434,6 +441,7 @@ export default {
   },
   data() {
     return {
+      defaultDate: new Date(),
       fileList: [
         { url: 'http://images.yuanjin.tech/FttC5_iCXdclDimGUFu42ng8IdGY' },
       ],

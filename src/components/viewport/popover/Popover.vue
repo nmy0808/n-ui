@@ -20,6 +20,10 @@
 <script>
 export default {
   props: {
+    onlyOuterClose: {
+      type: Boolean,
+      default: false,
+    },
     position: {
       type: String,
       default: 'top',
@@ -67,16 +71,22 @@ export default {
   watch: {
     show() {
       if (this.show) {
+        this.$emit('change-show', this.show);
         this.initContentPosition();
         this.addRootEvent();
       } else {
+        this.$emit('change-show', this.show);
         this.removeRootEvent();
       }
     },
   },
   methods: {
     handleChangeShow() {
-      this.show = !this.show;
+      let show = !this.show;
+      if (this.onlyOuterClose) {
+        show = true;
+      }
+      this.show = show;
     },
     addRootEvent() {
       document.addEventListener('click', this.rootEvent);

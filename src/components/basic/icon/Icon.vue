@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '//at.alicdn.com/t/font_2449846_t91setawj1.css';
+@import '//at.alicdn.com/t/font_2449846_2mycn710dfk.css';
 $button-height: 32px;
 $font-size: 14px;
 $button-bg: white;
