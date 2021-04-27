@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="box-item" style="height: 500px">
-      <NDatapicker :defaultDate.sync="defaultDate" />
+      <NDatapicker :defaultDate.sync="defaultDate"
+      :minScoped=" new Date('2000-3-20')" :maxScoped=" new Date('2025-10-8')" />
     </div>
     <div class="box-item">
       <NUploader

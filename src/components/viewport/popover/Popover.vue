@@ -1,14 +1,14 @@
 <template>
   <div class="popover-container">
-    <div
-      data-test="content"
-      class="content-container"
-      :class="[position]"
-      v-if="show"
-      ref="content"
-    >
-      <slot name="content"></slot>
-    </div>
+      <div
+        data-test="content"
+        class="content-container"
+        :class="[position]"
+        v-if="show"
+        ref="content"
+      >
+        <slot name="content"></slot>
+      </div>
     <div class="button-container" data-test="button" ref="button">
       <slot>
         <button>按钮</button>
