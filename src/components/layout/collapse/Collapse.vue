@@ -8,6 +8,7 @@
 import Vue from 'vue';
 
 export default {
+  name: 'NCollapse',
   model: {
     prop: 'collapseSelected',
     event: 'update:collapseSelected',

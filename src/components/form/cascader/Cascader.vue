@@ -25,6 +25,7 @@ import CascaderItem from './CascaderItem.vue';
 import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
+  name: 'NCascader',
   components: { CascaderItem, NIcon },
   props: {
     cascaderSource: {

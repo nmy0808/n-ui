@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name: 'NIcon',
   props: {
     icon: {
       type: String,

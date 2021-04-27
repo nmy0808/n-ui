@@ -11,7 +11,7 @@
 <script>
 export default {
   inject: ['eventBus', 'vertical'],
-  name: 'MenuItem',
+  name: 'NMenuItem',
   props: {
     index: {
       type: String,
@@ -44,7 +44,7 @@ export default {
     },
     setSubMenuState() {
       let parent = this.$parent;
-      while (parent.$options.name === 'SubMenu') {
+      while (parent.$options.name === 'NSubMenu') {
         parent.active = true;
         parent = parent.$parent;
       }

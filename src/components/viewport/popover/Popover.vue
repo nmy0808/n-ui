@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  name: 'NPopover',
   props: {
     onlyOuterClose: {
       type: Boolean,

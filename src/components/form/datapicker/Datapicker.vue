@@ -108,8 +108,12 @@ import NButtonGroup from '../../basic/button/ButtonGroup.vue';
 import NButton from '../../basic/button/Button.vue';
 
 export default {
+  name: 'NDatapicker',
   components: {
-    NPopover, NIcon, NButton, NButtonGroup,
+    NPopover,
+    NIcon,
+    NButton,
+    NButtonGroup,
   },
   props: {
     minScoped: {

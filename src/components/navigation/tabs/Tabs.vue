@@ -8,7 +8,7 @@
 import Vue from 'vue';
 
 export default {
-  name: 'TabsWrapper',
+  name: 'NTabWrapper',
   model: {
     prop: 'selected',
     event: 'update:selected',
@@ -37,11 +37,11 @@ export default {
   mounted() {
     if (this.selected) {
       this.$children.forEach((child) => {
-        if (child.$options.name === 'TabsHead') {
+        if (child.$options.name === 'NTabHead') {
           child.$children.forEach((item) => {
             if (
               item.name === this.selected
-              && item.$options.name === 'TabsTitle'
+              && item.$options.name === 'NTabTitle'
             ) {
               this.eventBus.$emit('update:selected', item);
             }

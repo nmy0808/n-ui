@@ -8,11 +8,11 @@
 import Vue from 'vue';
 
 export default {
+  name: 'NNavMenu',
   model: {
     prop: 'selectedIndex',
     event: 'update:selectedIndex',
   },
-  name: 'NavMenu',
   props: {
     selectedIndex: {
       type: Array,

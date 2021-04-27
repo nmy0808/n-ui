@@ -13,10 +13,10 @@
 </template>
 
 <script>
-// import NIcon from '@/components/basic/icon/Icon.vue';
 import NIcon from '../icon/Icon.vue';
 
 export default {
+  name: 'NButton',
   components: { NIcon },
   props: {
     icon: {

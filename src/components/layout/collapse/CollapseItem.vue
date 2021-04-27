@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  name: 'NCollapseItem',
   props: {
     name: {
       type: String,

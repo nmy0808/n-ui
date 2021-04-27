@@ -5,7 +5,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'NHeader',
+};
 </script>
 
 <style lang="scss" scoped>

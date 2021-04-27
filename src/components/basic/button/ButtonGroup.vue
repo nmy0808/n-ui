@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name: 'NButtonGroup',
   mounted() {
     const childs = this.$el.children;
     childs.forEach((element) => {
@@ -54,10 +55,10 @@ $icon-size: 1em;
     border-right-color: $border-color-hover;
     border-left-color: $border-color-hover;
     // z-index: -1;
-    &:first-child{
+    &:first-child {
       border-left-color: $button-active-bg;
     }
-    &:last-child{
+    &:last-child {
       border-right-color: $button-active-bg;
     }
   }

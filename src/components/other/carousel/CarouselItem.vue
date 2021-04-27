@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'CarouselItem',
+  name: 'NCarouselItem',
   inject: ['eventBus'],
   props: {
     name: {

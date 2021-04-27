@@ -44,6 +44,7 @@
 import NIcon from '@/components/basic/icon/Icon.vue';
 
 export default {
+  name: 'NInput',
   components: { NIcon },
   props: {
     value: {

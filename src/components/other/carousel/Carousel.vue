@@ -33,6 +33,7 @@ import Vue from 'vue';
 import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
+  name: 'NCarousel',
   components: { NIcon },
   props: {
     height: {
@@ -138,7 +139,7 @@ export default {
     this.autoPlay();
     // 获取核心数据源
     const items = this.$children.filter(
-      (it) => it.$options.name === 'CarouselItem',
+      (it) => it.$options.name === 'NCarouselItem',
     );
     this.source = items.map((it) => it.name);
     this.curIndex = this.source.indexOf(this.initialIndex);

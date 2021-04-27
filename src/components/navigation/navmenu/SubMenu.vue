@@ -37,7 +37,7 @@ import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
   inject: ['eventBus', 'vertical'],
-  name: 'SubMenu',
+  name: 'NSubMenu',
   components: { NIcon },
   data() {
     return {
@@ -86,7 +86,7 @@ export default {
   },
   computed: {
     noneBorder() {
-      return this.$parent.$options.name !== 'NavMenu';
+      return this.$parent.$options.name !== 'NNavMenu';
     },
     eventEnter() {
       return this.vertical ? 'click' : 'mouseenter';

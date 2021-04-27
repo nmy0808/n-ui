@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'NLayout',
   data() {
     return {
       hasSider: false,
@@ -13,7 +14,7 @@ export default {
   },
   mounted() {
     this.$children.forEach((child) => {
-      if (child.$options.name === 'Sider') {
+      if (child.$options.name === 'NSider') {
         this.hasSider = true;
       }
     });

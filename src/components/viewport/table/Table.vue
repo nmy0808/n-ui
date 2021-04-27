@@ -133,6 +133,7 @@ import NIcon from '../../basic/icon/Icon.vue';
 import NScroll from '../scroll/Scroll.vue';
 
 export default {
+  name: 'NTable',
   components: {
     NScroll,
     NIcon,
@@ -141,7 +142,6 @@ export default {
       render: (h, ctx) => ctx.props.vnodes,
     },
   },
-  name: 'NTable',
   data() {
     return {
       scrollHeight: 0,

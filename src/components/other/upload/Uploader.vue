@@ -30,6 +30,7 @@ import NIcon from '../../basic/icon/Icon.vue';
 import defaultImg from '.../../../public/default_img.png';
 
 export default {
+  name: 'NUploader',
   components: { NIcon },
   props: {
     sizeLimit: {

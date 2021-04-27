@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'TabsBody',
+  name: 'NTabBody',
 };
 </script>
 

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'TabsPane',
+  name: 'NTabPane',
   inject: ['eventBus'],
   props: {
     name: {

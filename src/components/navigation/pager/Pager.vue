@@ -35,6 +35,7 @@
 import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
+  name: 'NPager',
   components: { NIcon },
   model: {
     prop: 'current',

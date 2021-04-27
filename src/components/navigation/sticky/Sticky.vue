@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'NSticky',
   props: {
     distance: {
       type: [Number],
