@@ -302,7 +302,7 @@
         <n-button icon="i-arrowleft">前进</n-button>
         <n-button icon="i-arrowright" position="right">后退</n-button>
       </n-button-group>
-      <n-button icon="i-arrowright" :loading="true" position="right"
+      <n-button icon="i-arrowright" disable :loading="true" position="right"
         >后退</n-button
       >
       <n-button

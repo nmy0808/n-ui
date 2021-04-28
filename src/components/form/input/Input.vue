@@ -1,6 +1,6 @@
 <template>
   <div
-    class="input-container"
+    class="n-input"
     :class="{ error, success, prefix: prefix && type !== 'textarea' }"
   >
     <input
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import NIcon from '@/components/basic/icon/Icon.vue';
+import NIcon from '../../basic/icon/Icon.vue';
 
 export default {
   name: 'NInput',
@@ -109,31 +109,30 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../../../styles/var.scss';
 $input-height: 32px;
-$font-size: 14px;
-$border-radius: 4px;
-$border-color: #d9d9d9;
-$color: #333;
-$error: #f22735;
-$success: #44b275;
-.input-container {
+.n-input {
   font-size: 14px;
   width: 100%;
   min-height: 4em;
   position: relative;
-  color: $color;
+  color: $words;
   .icon-box {
     position: absolute;
     left: 0;
-    top: 0px;
+    top: 0;
+    bottom: 0;
     width: 28px;
-    height: $input-height;
+    height: $input-height + 2px;
     font-size: 1.3em;
     margin-left: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #999;
+    .n-icon{
+      transform: translateY(0.15em);
+    }
   }
   textarea {
     padding: 0.5em 0.5em;
@@ -146,8 +145,8 @@ $success: #44b275;
   textarea {
     width: 100%;
     margin-bottom: 0.3em;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
+    border: 1px solid $gray;
+    border-radius: $base-radius;
     min-height: $input-height;
     font-size: inherit;
     font-weight: normal;
@@ -156,12 +155,12 @@ $success: #44b275;
     &:focus,
     &:hover {
       outline: none;
-      border-color: #2f80ff;
+      border-color: $primary;
     }
     &[disabled] {
       cursor: not-allowed;
       background: #f4f6f9;
-      border-color: $border-color;
+      border-color: $gray;
       &::placeholder {
         color: rgb(206, 206, 206);
       }
@@ -184,10 +183,10 @@ $success: #44b275;
     }
   }
   &.error {
-    color: $error;
+    color: $danger;
     input,
     textarea {
-      border-color: $error;
+      border-color: $danger;
     }
   }
   &.success {

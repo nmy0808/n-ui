@@ -150,7 +150,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$border-color: #ccc;
+@import '../../../styles/var.scss';
+$border-color: lighten($gray, 24%);
 .popover-container {
   display: inline-block;
   .button-container {
@@ -159,12 +160,12 @@ $border-color: #ccc;
 }
 .content-container {
   position: absolute;
+  z-index:1;
   display: inline-block;
   word-break: break-all;
   max-width: 20em;
-  border: 1px solid $border-color;
   padding: 0.5em;
-  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.342));
+  filter: drop-shadow(3.5px 3px 6.5px rgba(0, 0, 0, 0.096));
   background: white;
   &::after,
   &::before {
@@ -192,7 +193,7 @@ $border-color: #ccc;
       bottom: 0;
       transform: translateX(-50%) translateY(100%);
       margin-bottom: 2px;
-      // border-top-color: white;
+      border-top-color: white;
       border-top-color: white;
     }
   }

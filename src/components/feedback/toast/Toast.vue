@@ -1,5 +1,5 @@
 <template>
-  <div class="toast-container" :class="[positionClass]">
+  <div class='n-toast' :class="[positionClass]">
     <div class="content" data-test="content">
       <slot v-if="!enabledHtml">{{ content }}</slot>
       <div v-else v-html="content" data-test="content-html"></div>
@@ -85,7 +85,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.toast-container {
+.n-toast {
   position: fixed;
   z-index: 9999;
   max-width: 268px;

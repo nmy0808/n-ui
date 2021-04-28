@@ -16,19 +16,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '//at.alicdn.com/t/font_2449846_2mycn710dfk.css';
-$button-height: 32px;
-$font-size: 14px;
-$button-bg: white;
-$button-icon-size: 1em;
-$button-active-bg: #eee;
-$border-radius: 4px;
-$color: #333;
-$border-color: #999;
-$border-color-hover: #666;
-$icon-size: 1em;
+@import '//at.alicdn.com/t/font_2449846_m1f2230a1zk.css';
+//@import '//at.alicdn.com/t/font_2449846_2mycn710dfk.css';
+//@import '//at.alicdn.com/t/font_2449846_8m6tw3684ll.css';
+@import '../../../styles/var.scss';
 .n-icon {
-  font-size: $icon-size;
+  font-size: $base-size;
   // height: $icon-size;
   vertical-align: middle;
 }

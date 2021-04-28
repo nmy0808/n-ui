@@ -1,19 +1,24 @@
-$button-height: 32px;
-$font-size: 14px;
-$button-bg: white;
-$button-icon-size: 1em;
-$button-active-bg: #eee;
-$border-radius: 4px;
-$color: #333;
-$border-color: #999;
-$border-color-hover: #666;
-$icon-size: 1em;
-// 
-$danger: #cc3600; // 危险、错误
-$primary: #6b9eee; // 主色调、链接
+$danger: #f53c17; // 危险、错误
+$primary: #1686f5; // 主色调、链接
 $words: #373737; // 大部分文字、深色文字
 $lightWords: #999; // 少部分文字、浅色文字
-$warn: #dc6a12; // 警告
-$success: #7ebf50; // 成功
+$warn: #dd9a37; // 警告
+$success: #65bd30; // 成功
 $gray: #b4b8bc; // 灰色
 $dark: #202020; // 深色
+$base-size: 14px; //基础文字大小
+$base-radius: 4px; //基础圆角
+$box-shadow: 3.5px 3px 6.5px 0.5px rgba(0, 0, 0, 0.219);
+//
+@mixin spin() {
+  animation: spin 3s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

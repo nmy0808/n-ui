@@ -1,23 +1,23 @@
 <template>
-  <div class="cascader-item-container">
-    <div class="left">
+  <div class='n-cascader-item'>
+    <div class='left'>
       <div
-        class="item"
-        v-for="item in cascaderSource"
-        :key="item.value"
-        @click="handleClickItem(item)"
-        :class="{ active: cascaderSourced[level] === item.value }"
+        class='item'
+        v-for='item in cascaderSource'
+        :key='item.value'
+        @click='handleClickItem(item)'
+        :class='{ active: cascaderSourced[level] === item.value }'
       >
-        <n-icon class="icon" icon="i-arrow-right" v-if="item.children" />
+        <n-icon class='icon' icon='i-arrow-right' v-if='item.children' />
         {{ item.label }}
       </div>
     </div>
-    <div class="right" v-if="sourcedChildren">
+    <div class='right' v-if='sourcedChildren'>
       <CascaderItem
-        :cascaderSource="sourcedChildren"
-        :cascaderSourced="cascaderSourced"
-        :level="level + 1"
-        :list="list"
+        :cascaderSource='sourcedChildren'
+        :cascaderSourced='cascaderSourced'
+        :level='level + 1'
+        :list='list'
       />
     </div>
   </div>
@@ -80,15 +80,26 @@ export default {
       this.eventBus.$emit('update:cascaderSourced', cascaderSourcedCopy);
     },
   },
-  mounted() {},
 };
 </script>
-<style lang="scss" scoped>
-.cascader-item-container {
+<style lang='scss' scoped>
+@import '../../../styles/var.scss';
+
+.n-cascader-item {
   display: flex;
   .left {
     flex-shrink: 0;
     width: 100%;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 1px;
+      background: white;
+    }
     .item {
       background: white;
       position: relative;
@@ -96,14 +107,27 @@ export default {
       padding: 0.5em 0;
       padding-left: 0.5em;
       cursor: pointer;
-      &:hover {
-        background: #f5f5f5;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: lighten($gray,20%);
       }
+
+      &:hover {
+        background: lighten($gray,24%);
+      }
+
       &.active {
         font-weight: bold;
-        color: #4b82f4;
-        background: #f5f5f5;
+        color: $primary;
+        background: lighten($gray,24%);
       }
+
       .icon {
         position: absolute;
         right: 0.5em;
@@ -112,9 +136,14 @@ export default {
       }
     }
   }
+
   .right {
     flex-shrink: 0;
     width: 100%;
+  }
+
+  .left, .right {
+    box-shadow: $box-shadow;
   }
 }
 </style>

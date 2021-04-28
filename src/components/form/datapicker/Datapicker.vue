@@ -11,7 +11,7 @@
         <div class="datapicker-content-header">
           <div class="datapicker-content-header-left">
             <div class="fh" @click="onChangeShowYear('prev')">
-              <n-icon icon="i-d-arrow-left" />
+              <n-icon icon="i-arrow-first" />
             </div>
             <div class="fh" @click="onChangeShowMonth('prev')">
               <n-icon icon="i-arrow-left" />
@@ -28,7 +28,7 @@
               <n-icon icon="i-arrow-right" />
             </div>
             <div class="fh" @click="onChangeShowYear('next')">
-              <n-icon icon="i-d-arrow-right" />
+              <n-icon icon="i-arrow-last" />
             </div>
           </div>
         </div>
@@ -92,9 +92,8 @@
         </div>
       </template>
       <div class="datapicker-input">
-        <input type="text" :value="calcDefaultDateStr" />
-        <n-icon icon="i-riqi" class="icon-left" />
-        <n-icon icon="i-error" class="icon-right fh" />
+        <div class="input">{{ calcDefaultDateStr }}</div>
+        <n-icon icon="i-date" class="icon-left" />
       </div>
     </n-popover>
   </div>
@@ -317,15 +316,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$color: #3d60fa;
+@import '../../../styles/var.scss';
+$color: $primary;
 .datapicker-container {
   .datapicker-input {
     position: relative;
-    input {
+    .input {
       outline: none;
       height: 2.4em;
       width: 15em;
       padding-left: 2em;
+      display: flex;
+      align-items: center;
+      border: 1px solid $gray;
+      border-radius: $base-radius;
+      cursor: pointer;
     }
     .icon-left {
       position: absolute;
@@ -339,6 +344,7 @@ $color: #3d60fa;
       position: absolute;
       right: 0.5em;
       top: 50%;
+      z-index: 1;
       transform: translateY(-50%);
       color: rgba(153, 153, 153, 0.692);
       cursor: pointer;
@@ -420,23 +426,22 @@ $color: #3d60fa;
     height: 3em;
     padding: 0 1em;
   }
-  &.scoped {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1.5em;
-  }
   &-year,
   &-month {
+    flex-grow: 1;
     padding-top: 1em;
     font-size: 12px;
     display: flex;
     flex-direction: column;
     text-align: center;
   }
+  &.scoped {
+    display: flex;
+    padding: 0 1.5em;
+  }
   select {
     font-size: 14px;
     margin-top: 1em;
-    width: 8em;
     height: 12em;
     border: 1px solid rgba(204, 204, 204, 0.24);
     outline: none;

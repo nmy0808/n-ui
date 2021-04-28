@@ -1,5 +1,5 @@
 <template>
-  <div class="cascader-container">
+  <div class='n-cascader'>
     <div class="header" ref="header" @click="handleSwitchBody">
       {{ inputTxt }}
       <n-icon
@@ -85,6 +85,11 @@ export default {
       this.$emit('update:cascaderSourced', e);
     });
   },
+  beforeDestroy() {
+    this.eventBus.$off('update:list');
+    this.eventBus.$off('update:bodyVisible');
+    this.eventBus.$off('update:cascaderSourced');
+  },
   watch: {
     bodyVisible(val) {
       setTimeout(() => {
@@ -99,14 +104,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.cascader-container {
+@import '../../../styles/var.scss';
+.n-cascader {
   position: relative;
   width: 20em;
   font-size: 14px;
   .header {
     position: relative;
     height: 32px;
-    border: 1px solid;
+    border-radius: $base-radius;
+    border: 1px solid $gray;
     display: flex;
     align-items: center;
     padding-left: 0.5em;
@@ -117,14 +124,16 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       z-index: 11;
+      color: $gray;
     }
   }
   .body {
+    margin-top: 0.1em;
     position: absolute;
     left: 0;
     top: 100%;
+    z-index: 1;
     width: 40%;
-    // background: white;
   }
 }
 </style>

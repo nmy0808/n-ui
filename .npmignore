@@ -11,7 +11,7 @@ https:
 .browserslistrc
 .editorconfig
 .eslintignore
-.eslintrc
+.eslintrc.js  
 .gitignore
 .prettierrc
 babel.config.js

@@ -1,11 +1,17 @@
 <template>
-  <div class="n-button-group-container">
+  <div class='n-button-group' :class='calcClass'>
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
   name: 'NButtonGroup',
+  props: {
+    border: {
+      type: Boolean,
+      default: true,
+    },
+  },
   mounted() {
     const childs = this.$el.children;
     childs.forEach((element) => {
@@ -17,49 +23,65 @@ export default {
       }
     });
   },
+  computed: {
+    calcClass() {
+      return {
+        'no-border': !this.border,
+        'has-border': this.border,
+      };
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
-$button-height: 32px;
-$font-size: 14px;
-$button-bg: white;
-$button-icon-size: 1em;
-$button-active-bg: #eee;
-$border-radius: 4px;
-$color: #333;
-$border-color: #999;
-$border-color-hover: #666;
-$icon-size: 1em;
-.n-button-group-container {
+<style lang='scss' scoped>
+@import '../../../styles/var.scss';
+
+.n-button-group {
   display: inline-flex;
   vertical-align: middle;
-  button {
-    border-radius: 0;
-    margin-left: -1px;
-  }
-  & > :first-child {
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-    margin-left: 0;
-  }
-  & > :last-child {
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-  }
-  button:hover {
-    position: relative;
-    z-index: 2;
-  }
-  button:active {
-    position: relative;
-    border-right-color: $border-color-hover;
-    border-left-color: $border-color-hover;
-    // z-index: -1;
-    &:first-child {
-      border-left-color: $button-active-bg;
+  &.no-border {
+    .n-button {
+      border-radius: 0;
+      margin-left: -1px;
+      border: 1px solid transparent;
+      border-top: 1px solid $gray;
+      border-bottom: 1px solid $gray;
+      &:first-child {
+        border-top-left-radius: $base-radius;
+        border-bottom-left-radius: $base-radius;
+        margin-left: 0;
+        border-left: 1px solid $gray;
+      }
+      &:last-child {
+        border-top-right-radius: $base-radius;
+        border-bottom-right-radius: $base-radius;
+        border-right: 1px solid $gray;
+      }
+      &:active {
+        background: $primary;
+        color: white;
+      }
     }
-    &:last-child {
-      border-right-color: $button-active-bg;
+  }
+  &.has-border{
+    .n-button {
+      border-radius: 0;
+      margin-left: -1px;
+      &:first-child {
+        border-top-left-radius: $base-radius;
+        border-bottom-left-radius: $base-radius;
+        margin-left: 0;
+        border-left: 1px solid $gray;
+      }
+      &:last-child {
+        border-top-right-radius: $base-radius;
+        border-bottom-right-radius: $base-radius;
+        border-right: 1px solid $gray;
+      }
+      &:active:not(.disable) {
+        background: $primary;
+        color: white;
+      }
     }
   }
 }
