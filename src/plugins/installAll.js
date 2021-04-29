@@ -32,8 +32,7 @@ import NDatapicker from '@/components/form/datapicker/Datapicker.vue';
 
 export default {
   install(vue) {
-    const vueTemp = vue;
-    vueTemp.prototype.components = {
+    vue.components({
       NButton,
       NIcon,
       NButtonGroup,
@@ -65,6 +64,6 @@ export default {
       NSticky,
       NUploader,
       NDatapicker,
-    };
+    });
   },
 };
