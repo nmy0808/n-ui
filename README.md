@@ -23,9 +23,10 @@ $ yarn add nmy-ui
 ```javascript
 import Vue from 'vue'
 import App from 'components/app.vue'
-import NmyUi from 'nmy-ui'
-import 'nmy-ui/dist/nmy-ui.css'
-Vue.use(NmyUi)
+import { NmyUi } from "nmy-ui";
+import "nmy-ui/dist/nui.css";
+
+Vue.use(NmyUi);
 new Vue({
   el: '#app',
   render: h => h(App)
@@ -33,6 +34,10 @@ new Vue({
 ```
 
 以上代码便完成了 nmy-ui 的引入。需要注意的是，样式文件需要单独引入。
+
+组件也可以单独引用, 像这样:
+import { NButton, NDatapicker } from "nmy-ui";
+
 
 ## 特别提醒
 
