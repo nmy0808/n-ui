@@ -37,7 +37,7 @@ export default {
       fileList: [
         {
           name: 'xxx.jpg',
-          url: 'http://images.yuanjin.tech/Fq-0ZPxpeREOWJ0Ch9HY9c4AAlSA',
+          url: 'https://images.yuanjin.tech/Fq-0ZPxpeREOWJ0Ch9HY9c4AAlSA',
         },
       ],
     };

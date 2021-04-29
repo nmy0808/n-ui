@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import url('//at.alicdn.com/t/font_2449846_m1f2230a1zk.css');
 .item{
   display: flex;

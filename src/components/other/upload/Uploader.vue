@@ -20,8 +20,12 @@
           class="turn loading"
         />
         <n-icon v-else icon="i-error" class="error" />
-        <img v-if="it.status === 'fail'" :src="defaultImg" />
-        <img v-else :src="it.url" />
+        <img
+          referrerpolicy="no-referrer"
+          v-if="it.status === 'fail'"
+          :src="defaultImg"
+        />
+        <img referrerpolicy="no-referrer" v-else :src="it.url" />
         <div class="upload-file-name">{{ it.name }}</div>
         <div>
           <n-icon @click.native="onDeleteFile(it)" icon="i-close"></n-icon>
@@ -171,6 +175,7 @@ export default {
         }
         const xhr = new XMLHttpRequest();
         xhr.open(this.method, this.action);
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data');
         xhr.onload = () => {
           ok(xhr.response);
         };
@@ -221,8 +226,8 @@ export default {
     border-radius: 4px;
     padding: 0 0.5em;
     cursor: pointer;
-     background: lighten($color: $gray, $amount: 24%);
-     margin: 1em;
+    background: lighten($color: $gray, $amount: 24%);
+    margin: 1em;
     &:hover {
       background: #f3f3f4;
       color: $primary;
@@ -268,7 +273,7 @@ export default {
       background: lighten($color: $gray, $amount: 19%);
     }
     100% {
-     background: lighten($color: $gray, $amount: 24%);
+      background: lighten($color: $gray, $amount: 24%);
     }
   }
 }

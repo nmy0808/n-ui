@@ -1,14 +1,14 @@
 module.exports = {
   // dest: '/n-ui/',
-  title: 'n-ui',
+  title: 'nmy-ui',
   description: '一套小巧的 Vue 组件',
   // -- 注释下面两项
-  // base: 'nmy-ui',
-  // configureWebpack: {
-  //   output: {
-  //     publicPath: 'https://nmy0808.github.io/nmy-ui/',
-  //   }
-  // },
+  base: 'nmy-ui',
+  configureWebpack: {
+    output: {
+      publicPath: 'https://nmy0808.github.io/nmy-ui/',
+    }
+  },
   // --
   themeConfig: {
     nav: [

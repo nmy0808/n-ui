@@ -1,11 +1,17 @@
 <template>
-  <div class='n-toast' :class="[positionClass]">
+  <div class="n-toast" :class="[positionClass]">
     <div class="content" data-test="content">
       <slot v-if="!enabledHtml">{{ content }}</slot>
       <div v-else v-html="content" data-test="content-html"></div>
     </div>
     <span class="line" v-if="closeBtn" ref="line"></span>
-    <div class="btn" v-if="closeBtn" ref="btn" @click="handleClose" data-test="btn">
+    <div
+      class="btn"
+      v-if="closeBtn"
+      ref="btn"
+      @click="handleClose"
+      data-test="btn"
+    >
       {{ closeBtn }}
     </div>
   </div>
@@ -120,6 +126,7 @@ export default {
     justify-content: center;
     font-size: 12px;
   }
+
   &.top {
     top: 1em;
     bottom: auto;
@@ -143,32 +150,32 @@ export default {
     animation: fade 0.2s;
   }
   @keyframes up {
-    0% {
-      margin-top: -2em;
-      opacity: 0;
-    }
-    100% {
-      margin-top: 0;
-      opacity: 100%;
-    }
+  0% {
+    margin-top: -2em;
+    opacity: 0;
   }
-  @keyframes fade {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 100%;
-    }
+  100% {
+    margin-top: 0;
+    opacity: 100%;
   }
-  @keyframes down {
-    0% {
-      margin-bottom: -2em;
-      opacity: 0;
-    }
-    100% {
-      margin-bottom: 0;
-      opacity: 100%;
-    }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes down {
+  0% {
+    margin-bottom: -2em;
+    opacity: 0;
+  }
+  100% {
+    margin-bottom: 0;
+    opacity: 100%;
+  }
+}
 }
 </style>

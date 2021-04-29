@@ -26,7 +26,7 @@ export default {
     onClick2() {
       this.$toast({
         content: '<a href="#">这是一条消息提示,这是一条消息提示..</a>',
-        duration: 2,
+        duration: 3,
         closeBtn: '关闭',
         position: 'bottom',
         enabledHtml: true,
@@ -57,7 +57,7 @@ export default {
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    transition: all 0.1s;
+    transition: all 0.2s;
     @media all and (max-width: 967px) {
       width: 30%;
     }
