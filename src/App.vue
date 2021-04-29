@@ -105,7 +105,7 @@
       </n-carousel>
     </div>
     <div class="box-item">
-      <Cascader
+      <n-cascader
         :cascaderSourced.sync="cascaderSourced"
         :cascaderSource="cascaderSource"
       />
@@ -134,86 +134,86 @@
       </n-collapse>
     </div>
     <div class="box-item">
-      <Popover trigger="click" position="bottom">
+      <n-popover trigger="click" position="bottom">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
-      <Popover trigger="click" position="top">
+      </n-popover>
+      <n-popover trigger="click" position="top">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
-      <Popover trigger="click" position="left">
+      </n-popover>
+      <n-popover trigger="click" position="left">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
-      <Popover trigger="click" position="right">
+      </n-popover>
+      <n-popover trigger="click" position="right">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
+      </n-popover>
     </div>
     <div class="box-item">
-      <Popover trigger="hover" position="bottom">
+      <n-popover trigger="hover" position="bottom">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
-      <Popover trigger="hover" position="top">
+      </n-popover>
+      <n-popover trigger="hover" position="top">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
-      <Popover trigger="hover" position="left">
+      </n-popover>
+      <n-popover trigger="hover" position="left">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
-      <Popover trigger="hover" position="right">
+      </n-popover>
+      <n-popover trigger="hover" position="right">
         <template #content>
           <div>
             我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容我是弹窗内容...
           </div>
         </template>
         <n-button>按钮</n-button>
-      </Popover>
+      </n-popover>
     </div>
     <div class="box-item">
       <n-tabs v-model="selected" @tabClick="tabClick">
-        <tab-head>
+        <n-tab-head>
           <n-button slot="tabBarExtraContent">按钮</n-button>
-          <tab-title name="tab1">标签一</tab-title>
-          <tab-title name="tab2">标签二</tab-title>
-          <tab-title name="tab3" disabled>标签三</tab-title>
-        </tab-head>
-        <tab-body class="tab-body">
-          <tab-pane name="tab1">内容1</tab-pane>
-          <tab-pane name="tab2">内容2</tab-pane>
-          <tab-pane name="tab3">内容3</tab-pane>
-        </tab-body>
+          <n-tab-title name="tab1">标签一</n-tab-title>
+          <n-tab-title name="tab2">标签二</n-tab-title>
+          <n-tab-title name="tab3" disabled>标签三</n-tab-title>
+        </n-tab-head>
+        <n-tab-body class="tab-body">
+          <n-tab-pane name="tab1">内容1</n-tab-pane>
+          <n-tab-pane name="tab2">内容2</n-tab-pane>
+          <n-tab-pane name="tab3">内容3</n-tab-pane>
+        </n-tab-body>
       </n-tabs>
     </div>
     <div class="box-item layout-box">
@@ -327,38 +327,41 @@
   </div>
 </template>
 <script>
-import NButton from './components/basic/button/Button.vue';
-import NIcon from './components/basic/icon/Icon.vue';
-import NButtonGroup from './components/basic/button/ButtonGroup.vue';
-import NInput from './components/form/input/Input.vue';
-import NRow from './components/layout/grid/Row.vue';
-import NCol from './components/layout/grid/Col.vue';
-import NLayout from './components/layout/container/Layout.vue';
-import NHeader from './components/layout/container/Header.vue';
-import NFooter from './components/layout/container/Footer.vue';
-import NContent from './components/layout/container/Content.vue';
-import NSider from './components/layout/container/Sider.vue';
-import NTabs from './components/navigation/tabs/Tabs.vue';
-import TabHead from './components/navigation/tabs/TabHead.vue';
-import TabBody from './components/navigation/tabs/TabBody.vue';
-import TabTitle from './components/navigation/tabs/TabTitle.vue';
-import TabPane from './components/navigation/tabs/TabPane.vue';
-import Popover from './components/viewport/popover/Popover.vue';
-import NCollapse from './components/layout/collapse/Collapse.vue';
-import NCollapseItem from './components/layout/collapse/CollapseItem.vue';
-import Cascader from './components/form/cascader/Cascader.vue';
-import NCarousel from './components/other/carousel/Carousel.vue';
-import NCarouselItem from './components/other/carousel/CarouselItem.vue';
-import NMenu from './components/navigation/navmenu/NavMenu.vue';
-import NSubMenu from './components/navigation/navmenu/SubMenu.vue';
-import NMenuItem from './components/navigation/navmenu/MenuItem.vue';
-import NPager from './components/navigation/pager/Pager.vue';
-import NTable from './components/viewport/table/Table.vue';
-import NTableColumn from './components/viewport/table/TableColumn.vue';
-import NSticky from './components/navigation/sticky/Sticky.vue';
-import NUploader from './components/other/upload/Uploader.vue';
-import NDatapicker from './components/form/datapicker/Datapicker.vue';
+import Vue from 'vue';
+import { NmyUi } from './index';
+// import NButton from './components/basic/button/Button.vue';
+// import NIcon from './components/basic/icon/Icon.vue';
+// import NButtonGroup from './components/basic/button/ButtonGroup.vue';
+// import NInput from './components/form/input/Input.vue';
+// import NRow from './components/layout/grid/Row.vue';
+// import NCol from './components/layout/grid/Col.vue';
+// import NLayout from './components/layout/container/Layout.vue';
+// import NHeader from './components/layout/container/Header.vue';
+// import NFooter from './components/layout/container/Footer.vue';
+// import NContent from './components/layout/container/Content.vue';
+// import NSider from './components/layout/container/Sider.vue';
+// import NTabs from './components/navigation/tabs/Tabs.vue';
+// import TabHead from './components/navigation/tabs/TabHead.vue';
+// import TabBody from './components/navigation/tabs/TabBody.vue';
+// import TabTitle from './components/navigation/tabs/TabTitle.vue';
+// import TabPane from './components/navigation/tabs/TabPane.vue';
+// import Popover from './components/viewport/popover/Popover.vue';
+// import NCollapse from './components/layout/collapse/Collapse.vue';
+// import NCollapseItem from './components/layout/collapse/CollapseItem.vue';
+// import Cascader from './components/form/cascader/Cascader.vue';
+// import NCarousel from './components/other/carousel/Carousel.vue';
+// import NCarouselItem from './components/other/carousel/CarouselItem.vue';
+// import NMenu from './components/navigation/navmenu/NavMenu.vue';
+// import NSubMenu from './components/navigation/navmenu/SubMenu.vue';
+// import NMenuItem from './components/navigation/navmenu/MenuItem.vue';
+// import NPager from './components/navigation/pager/Pager.vue';
+// import NTable from './components/viewport/table/Table.vue';
+// import NTableColumn from './components/viewport/table/TableColumn.vue';
+// import NSticky from './components/navigation/sticky/Sticky.vue';
+// import NUploader from './components/other/upload/Uploader.vue';
+// import NDatapicker from './components/form/datapicker/Datapicker.vue';
 
+Vue.use(NmyUi);
 const cascaderSource = [
   {
     label: '一级a',
@@ -407,39 +410,39 @@ const cascaderSource = [
 ];
 
 export default {
-  components: {
-    NDatapicker,
-    NUploader,
-    NSticky,
-    NIcon,
-    NButton,
-    NButtonGroup,
-    NInput,
-    NRow,
-    NCol,
-    NLayout,
-    NHeader,
-    NFooter,
-    NContent,
-    NSider,
-    NTabs,
-    TabHead,
-    TabBody,
-    TabTitle,
-    TabPane,
-    Popover,
-    NCollapse,
-    NCollapseItem,
-    Cascader,
-    NCarousel,
-    NCarouselItem,
-    NMenu,
-    NSubMenu,
-    NMenuItem,
-    NPager,
-    NTable,
-    NTableColumn,
-  },
+  // components: {
+  //   NDatapicker,
+  //   NUploader,
+  //   NSticky,
+  //   NIcon,
+  //   NButton,
+  //   NButtonGroup,
+  //   NInput,
+  //   NRow,
+  //   NCol,
+  //   NLayout,
+  //   NHeader,
+  //   NFooter,
+  //   NContent,
+  //   NSider,
+  //   NTabs,
+  //   TabHead,
+  //   TabBody,
+  //   TabTitle,
+  //   TabPane,
+  //   Popover,
+  //   NCollapse,
+  //   NCollapseItem,
+  //   Cascader,
+  //   NCarousel,
+  //   NCarouselItem,
+  //   NMenu,
+  //   NSubMenu,
+  //   NMenuItem,
+  //   NPager,
+  //   NTable,
+  //   NTableColumn,
+  // },
   data() {
     return {
       defaultDate: new Date(),
