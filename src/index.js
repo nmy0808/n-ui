@@ -29,3 +29,5 @@ export { default as NTableColumn } from '@/components/viewport/table/TableColumn
 export { default as NSticky } from '@/components/navigation/sticky/Sticky.vue';
 export { default as NUploader } from '@/components/other/upload/Uploader.vue';
 export { default as NDatapicker } from '@/components/form/datapicker/Datapicker.vue';
+export { NmyUi } from '@/plugins/index';
+export { clickOutside, dragDirective } from '@/directives/index';
