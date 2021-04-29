@@ -1,7 +1,7 @@
 {
   "name": "nmy-ui",
   "description": " 一套基于 Vue 2.6 的 UI 组件库。",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "dist/nui.umd.min.js",
   "repository": {
     "type": "git",
