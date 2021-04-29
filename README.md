@@ -36,7 +36,9 @@ new Vue({
 以上代码便完成了 nmy-ui 的引入。需要注意的是，样式文件需要单独引入。
 
 组件也可以单独引用, 像这样:
+```js
 import { NButton, NDatapicker } from "nmy-ui";
+```
 
 
 ## 特别提醒
