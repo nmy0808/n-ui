@@ -1,22 +1,59 @@
 ---
 title: 安装
 ---
-# 安装
-## 浏览器支持 / 兼容
-由于使用了很多新特性，目前组件库主要支持现代浏览器，并且某些组件在移动端 / 微信浏览器的表现不甚理想。
+# nmy-ui
 
-## 本地引用
-到官方仓库下载或使用命令行克隆到本地
 
-```shell
-$ git clone git@github.com:nmy0808/n-ui.git
+> 本组件库仅供学习交流，请勿在生产环境中使用
+
+## 安装
+
+克隆官方仓库或者使用 npm / yarn 安装
+
 ```
-下载 / 克隆到本地后，你就可以注册某个组件然后使用了。
+$ git clone https://github.com/nmy0808/nmy-ui.git
 
-## NPM 安装
-推荐使用`npm / yarn`来安装，享受生态圈和工具带来的便利。
-```shell
-$ npm install n-ui
-$ yarn add n-ui
+$ npm install nmy-ui
+$ yarn add nmy-ui
 ```
-如果您使用了npm / yarn安装，请继续阅读快速上手章节。
+
+## 使用
+
+如果使用了 npm / yarn 安装，一般在 main.js 中如下配置：
+
+```javascript
+import Vue from 'vue'
+import App from 'components/app.vue'
+import { NmyUi } from "nmy-ui";
+import "nmy-ui/dist/nui.css";
+
+Vue.use(NmyUi);
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+```
+
+以上代码便完成了 nmy-ui 的引入。需要注意的是，样式文件需要单独引入。
+
+组件也可以单独引用, 像这样:
+```js
+import { NButton, NDatapicker } from "nmy-ui";
+```
+
+
+## 特别提醒
+
+使用 nmy-ui 时，您需要使用 border-box 盒模型，否则会影响样式。代码示例：
+
+```css
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```
+
+如果您觉得还不错，请 star

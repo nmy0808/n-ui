@@ -12,8 +12,8 @@ module.exports = {
   // --
   themeConfig: {
     nav: [
-      { text: 'github', link: 'https://www.baidu.com' },
-      { text: 'vue3.0版本', link: 'https://www.taobao.com.com' }
+      { text: 'github', link: 'https://github.com/nmy0808/nmy-ui' },
+      { text: 'vue3.0版本', link: 'https://github.com/nmy0808/nmy-ui' }
     ],
     sidebar: [
       '/',

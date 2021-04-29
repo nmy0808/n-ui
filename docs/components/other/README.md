@@ -53,6 +53,27 @@ title: 其他
 <n-uploader/>
 </ClientOnly>
 
+### 基本使用
+```vue
+<n-uploader
+  method="post"
+  action="http://xxx.xxx.xx:5100/api/upload"
+  accept="image/*"
+  name="imagefile"
+  multiple
+  :sizeLimit="1024 * 1024 * 2"
+  :parse-response="parseResponse"
+  :file-list.sync="fileList"
+>
+  <n-button icon="i-upload">上传</n-button>
+  <template #tips>
+    <div>
+      只能上传jpg/png文件，且不超过2mb
+    </div>
+  </template>
+</n-uploader>
+```
+
 ### n-uploader Attributes
 
 | 属性名         | 含义     <div style="width:17em;"></div>            | 类型     | 必填 | 默认值      |

@@ -10,7 +10,7 @@
       :parse-response="parseResponse"
       :file-list.sync="fileList"
     >
-      <n-button icon="i-upload1">上传</n-button>
+      <n-button icon="i-upload">上传</n-button>
       <template #tips>
         <div style="font-size: 12px; margin-top: 1em">
           只能上传jpg/png文件，且不超过2mb
