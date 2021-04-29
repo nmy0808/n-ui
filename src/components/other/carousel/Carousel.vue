@@ -132,7 +132,7 @@ export default {
   },
   computed: {
     maxIndex() {
-      return this.$slots.default.length - 1;
+      return this.$children.filter((it) => it.$options.name === 'NCarouselItem').length - 1;
     },
   },
   mounted() {

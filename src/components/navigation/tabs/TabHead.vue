@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
 .tabs-head-container {
   height: 40px;
   display: flex;
@@ -38,7 +39,7 @@ export default {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background: #3584fc;
+    background: transparent;
     transition: all 0.1s;
   }
   .btn-wrapper {

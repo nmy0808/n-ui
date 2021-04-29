@@ -54,7 +54,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
 .menu-item-container {
+  font-size: $base-size  + 2px;
   width: 100%;
   user-select: none;
   cursor: pointer;
@@ -64,15 +66,16 @@ export default {
   align-items: center;
   background: white;
   &.active:not(.vertical) {
-    color: #3b73fb;
-    border-bottom: 1px solid #3b73fb;
+    color: $primary;
+    border-bottom: 1px solid $primary;
   }
   &.active {
-    color: #3b73fb;
+    font-weight: bold;
+    color: $primary;
     background: #efefef;
   }
   &:hover {
-    color: #3b73fb;
+    color: $primary;
     background: #f1f1f1;
   }
   &.vertical {

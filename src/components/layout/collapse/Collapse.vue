@@ -1,5 +1,5 @@
 <template>
-  <div class="collapse-item-container">
+  <div class="n-collapse">
     <slot></slot>
   </div>
 </template>
@@ -78,8 +78,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.collapse-item-container {
-  // border: 1px solid $border-color;
-  border-radius: 2px;
-}
 </style>

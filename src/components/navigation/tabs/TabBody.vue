@@ -11,7 +11,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
 .tabs-body-container {
-  background: #f5f5f5;
+  background: lighten($color: $gray, $amount: 22%);
+  border-radius: $base-radius;
 }
 </style>

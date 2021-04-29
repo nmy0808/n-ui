@@ -12,6 +12,7 @@ title: 表单
 
 ```js
 <Cascader
+  placeholder="请选择"
   :cascaderSourced.sync="cascaderSourced"
   :cascaderSource="cascaderSource"
 />
@@ -68,8 +69,9 @@ const cascaderSource = [
 
 | 属性名   | 含义                                                         | 类型  | 必填 | 默认值 |
 | -------- | ------------------------------------------------------------ | ----- | ---- | ------ |
-| source   | 级联选择器的数据源，格式较严格                               | Array | -    | -      |
-| selected | 当前选中的数据 value 值的集合，按层级次序排序，用 .sync 绑定 | Array | -    | -      |
+| cascaderSource  | 级联选择器的数据源，格式较严格                               | Array | -    | -      |
+| cascaderSourced | 当前选中的数据 value 值的集合，按层级次序排序，用 .sync 绑定 | Array | -    | -      |
+| placeholder  | 占位文字                               | String | -    | -      |
 <br></br>
 ## Datapicker 日期选择器
 导航组件，可无限嵌套子菜单，支持横向和纵向。导航菜单一般配合路由实现页面跳转功能，在selected属性上使用v-model可实现数据绑定，也可以监听selected-change事件，菜单被点击时将抛出对应条目的name值。
@@ -156,7 +158,7 @@ data(){
 | -------------- | -------------------- | -------------- | ---- | ------ |
 | value(v-model) | 输入框内容           | String         | 是   | -      |
 | placeholder    | 提示信息             | String         | -    | -      |
-| prefix         | 带有前缀图标的 input | string         | -    |        |
+| prefix         | 带有前缀图标的 input | String         | -    |        |
 | disabled       | [状态]禁用           | Boolean        | -    | false  |
 | error          | [状态]错误提示       | Boolean/String | -    | false  |
 | success        | [状态]正确提示       | Boolean/String | -    | false  |

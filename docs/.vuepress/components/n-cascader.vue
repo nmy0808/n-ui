@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div style="height:1em">
+    <div style="height: 1em">
       <template v-if="cascaderSourced.length">
         {{ cascaderSourced }}
       </template>
     </div>
     <n-cascader
       style="margin-top: 1em"
+      placeholder="请选择"
       :cascaderSourced.sync="cascaderSourced"
       :cascaderSource="cascaderSource"
     />

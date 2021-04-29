@@ -39,13 +39,13 @@
                   <NIcon
                     class="icon-top"
                     :class="{ active: orderBy[column.field] === 'asc' }"
-                    icon="i-sanjiaotop"
+                    icon="i-triangle-top"
                     style="font-size: 0.8em"
                   />
                   <NIcon
                     class="icon-bottom"
                     :class="{ active: orderBy[column.field] === 'desc' }"
-                    icon="i-sanjiaoxia"
+                    icon="i-triangle-bottom"
                     style="font-size: 0.8em"
                   />
                 </div>
@@ -81,6 +81,8 @@
                     :key="column.field"
                     :style="{
                       width: column.width,
+                      'text-align': column.align || 'center',
+                      'text-indent': column.align === 'left' ? '0.5em' : '',
                     }"
                   >
                     <slot></slot>
@@ -101,6 +103,8 @@
                     :key="column.field"
                     :style="{
                       width: column.width,
+                      'text-align': column.align || 'center',
+                      'text-indent': column.align === 'left' ? '0.5em' : '',
                     }"
                   >
                     {{ item[column.field] }}
@@ -275,17 +279,20 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$refs.scroll);
-    console.log(this.$refs.scroll.directives);
     this.$slots.default.forEach((vNode) => {
-      const { width, text, field } = vNode.data.attrs;
-      const render = vNode.data.scopedSlots && vNode.data.scopedSlots.default;
-      this.columns.push({
-        width,
-        text,
-        field,
-        render,
-      });
+      if (vNode.data) {
+        const {
+          width, text, field, align,
+        } = vNode.data.attrs;
+        const render = vNode.data.scopedSlots && vNode.data.scopedSlots.default;
+        this.columns.push({
+          width,
+          text,
+          field,
+          align,
+          render,
+        });
+      }
     });
 
     //
@@ -307,6 +314,11 @@ export default {
 
 <style lang="scss" scoped>
 $gray: #f4f3f4;
+.thead-move-target{
+  th{
+
+  }
+}
 .table-container {
   position: relative;
   background: white;
@@ -319,41 +331,51 @@ $gray: #f4f3f4;
     // overflow: hidden;
   }
   table {
+    display: table !important;
     text-align: left;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    border: none !important;
+    padding: 0;
+    margin: 0;
     .table-checkBox {
       width: 10px;
     }
     thead {
       text-align: left;
     }
+    tbody {
+      width: 100%;
+    }
     tr {
       background: white;
       height: 3em;
       border-bottom: 1px solid $gray;
+      text-align: center;
       td,
       th {
-        padding: 0 1em;
+        // padding: 0 10px;
+        // text-align: center;
+        min-width: 3em;
         .table-th {
           display: flex;
           align-items: center;
+          justify-content: center;
           .table-order-icons {
-            margin-left: 0.3em;
             cursor: pointer;
             display: inline-flex;
             flex-direction: column;
-            transform: scale(0.8) translateY(0.1em);
+            transform: scale(0.8) translateY(0.2em);
             color: lighten($color: #000000, $amount: 75%);
             .icon-top {
-              transform: translateY(0.2em);
+              transform: translateY(0.3em);
               &.active {
                 color: #3b73fb;
               }
             }
             .icon-bottom {
-              transform: translateY(-0.2em);
+              transform: translateY(-0.5em);
               &.active {
                 color: #3b73fb;
               }

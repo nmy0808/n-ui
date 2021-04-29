@@ -70,7 +70,7 @@ export default {
   width: 100%;
   height: 100%;
   flex-shrink: 0;
-  background: #ced7e2;
+  background: #e3ebf3;
 }
 .next-leave-active,
 .next-enter-active,

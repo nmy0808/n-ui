@@ -20,7 +20,16 @@ module.exports = {
       '/install/',
       {
         title: '组件',
-        children: ['/components/basic/','/components/feedback/','/components/form/'],
+        children: [
+          '/components/layout/',
+          '/components/basic/',
+          '/components/form/',
+          '/components/navigation/',
+          '/components/viewport/',
+          '/components/feedback/',
+          '/components/other/',
+          '/components/directives/',
+        ],
         collapsable: true, // 可选的, 默认值是 true,
       }
     ]

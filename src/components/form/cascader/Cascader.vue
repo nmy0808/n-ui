@@ -1,7 +1,13 @@
 <template>
-  <div class='n-cascader'>
+  <div class="n-cascader">
     <div class="header" ref="header" @click="handleSwitchBody">
       {{ inputTxt }}
+      <div
+        class="n-cascader-header-placeholder"
+        v-show="!cascaderSourced.length"
+      >
+        {{ placeholder }}
+      </div>
       <n-icon
         ref="icon"
         class="icon"
@@ -28,6 +34,10 @@ export default {
   name: 'NCascader',
   components: { CascaderItem, NIcon },
   props: {
+    placeholder: {
+      type: String,
+      default: '',
+    },
     cascaderSource: {
       type: Array,
       default: () => [],
@@ -118,13 +128,16 @@ export default {
     align-items: center;
     padding-left: 0.5em;
     cursor: pointer;
+    .n-cascader-header-placeholder {
+      color: $gray;
+    }
     .icon {
       position: absolute;
       right: 0.5em;
       top: 50%;
       transform: translateY(-50%);
       z-index: 11;
-      color: $gray;
+      color: $lightWords;
     }
   }
   .body {

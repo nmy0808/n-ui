@@ -130,7 +130,7 @@ $input-height: 32px;
     align-items: center;
     justify-content: center;
     color: #999;
-    .n-icon{
+    .n-icon {
       transform: translateY(0.15em);
     }
   }
@@ -160,9 +160,9 @@ $input-height: 32px;
     &[disabled] {
       cursor: not-allowed;
       background: #f4f6f9;
-      border-color: $gray;
+      border: 1px solid $gray;
       &::placeholder {
-        color: rgb(206, 206, 206);
+        color: $gray;
       }
     }
   }

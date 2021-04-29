@@ -3,14 +3,14 @@
     <div class="title-wrapper" @click="handleChangeSelected" data-test="title">
       <slot name="title"></slot>
     </div>
-    <div
-      class="items-wrapper"
-      :class="{ close: show }"
-      ref="items"
-      data-test="items"
-    >
-      <slot></slot>
-    </div>
+      <div
+        class="items-wrapper"
+        :class="{ close: show }"
+        ref="items"
+        data-test="items"
+      >
+        <slot></slot>
+      </div>
   </div>
 </template>
 
@@ -52,7 +52,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$bg: #f3f3f3;
+@import '../../../styles/var.scss';
+$bg: lighten($gray, 20%);
 $border-color: #ccc;
 .collapse-item-container {
   width: 100%;
@@ -60,18 +61,23 @@ $border-color: #ccc;
     background: $bg;
     padding: 0.5em 1em;
     cursor: pointer;
-    font-size: 14px;
+    font-size: $base-size;
+    border-radius: $base-radius;
+    color: black;
   }
   .items-wrapper {
     &.close {
       height: 0;
-      padding: 0;
+      padding: 0 1em;
       overflow: hidden;
-      border: 1px solid transparent;
     }
-    background: #f5f5f548;
-    font-size: 12px;
+    border-bottom: 2px solid white;
+    transition: all 0.1s;
+    border-radius: $base-radius;
+    background: lighten($gray, 26%);
+    font-size: $base-size;
     padding: 0.5em 1em;
   }
 }
+
 </style>

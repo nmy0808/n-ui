@@ -52,17 +52,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
 .tabs-container {
-  font-size: 14px;
+  font-size: $base-size;
   padding: 0.7em;
   cursor: pointer;
+  color: $words;
+  border-top-left-radius: $base-radius;
+  border-top-right-radius: $base-radius;
+  transition: all 0.1s;
   &.active {
-    color: #3584fc;
+    color: $primary;
     font-weight: bold;
-    background: #f5f5f5;
+    background: lighten($color: $gray, $amount: 22%);
   }
   &.disabled {
-    color: #999;
+    color: lighten($color: $gray, $amount: 10%);
     font-weight: normal;
     cursor: not-allowed;
   }

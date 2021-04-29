@@ -62,14 +62,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
 .navmenu-container {
   background: white;
-  box-shadow: 1px 1px 1px rgba(31, 31, 31, 0.103);
-  font-size: 16px;
+  font-size: $base-size + 2px;
   display: flex;
   position: relative;
   z-index: 3;
   background: white;
+  border: 1px solid lighten($color: $lightWords, $amount: 35%);
   &.vertical {
     overflow: hidden;
     flex-direction: column;

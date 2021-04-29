@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="pager-container"
-    :class="{ 'pager-none': singleHide && total <= 1 }"
-  >
+  <div class="n-pager" :class="{ 'pager-none': singleHide && total <= 1 }">
     <span
       class="pager-item pager-prev"
       @click="handleSwitchPage(current - 1)"
@@ -68,8 +65,8 @@ export default {
         this.current + 2,
       ]
         .filter(
-          (element, index, self) => self.indexOf(element) === index && element > 0
-            && element <= total,
+          (element, index, self) => self.indexOf(element) === index
+          && element > 0 && element <= total,
         )
         .sort((a, b) => a - b)
         .reduce((pre, cur, i, arr) => {
@@ -97,10 +94,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pager-container {
+@import '../../../styles/var.scss';
+.n-pager {
   user-select: none;
   display: inline-flex;
   align-items: center;
+  color: $words;
   &.pager-none {
     display: none;
   }
@@ -109,34 +108,41 @@ export default {
     height: 28px;
     min-width: 28px;
     border: 1px solid transparent;
-    background: #f1f1f1;
+    background: lighten($color: $gray, $amount: 20%);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     margin: 0.3em;
     transition: all 0.2s;
+    border-radius: $base-radius;
     &.pager-move {
       border: 1px solid transparent;
       background: none;
+      cursor: default;
+      &:hover {
+        color: $lightWords;
+      }
     }
     &.pager-prev,
     &.pager-next {
       border: 1px solid transparent;
-      background: #f1f1f1;
     }
     &:hover {
-      color: #3b73fb;
+      color: $primary;
     }
     &.active {
-      background: #3b73fb;
+      background: $primary;
       color: white;
       cursor: default;
     }
     &.disabled {
-      background: #f1f1f196;
-      color: rgb(216, 216, 216);
+      background: lighten($color: $gray, $amount: 24%);
+      color: lightgray;
       cursor: no-drop;
+      &:hover {
+        color: lightgray;
+      }
     }
   }
 }

@@ -116,6 +116,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
 $subMenu-width: 100%;
 .submenu-container {
   width: $subMenu-width;
@@ -142,17 +143,18 @@ $subMenu-width: 100%;
       transition: 0.3s;
     }
     &.active {
-      color: #3b73fb;
+    font-weight: bold;
+      color: $primary;
     }
     &.active:not(.vertical) {
-      color: #3b73fb;
-      border-bottom: 1px solid #3b73fb;
+      color: $primary;
+      border-bottom: 1px solid $primary;
     }
     &.open:not(.vertical) {
       background: #f1f1f1;
     }
     &:hover {
-      color: #3b73fb;
+      color: $primary;
       background: #f1f1f1;
     }
   }
@@ -191,7 +193,7 @@ $subMenu-width: 100%;
   }
   .menu-item-container {
     &.active {
-      color: #3b73fb;
+      color: $primary;
       border-bottom: none;
     }
     width: 100%;

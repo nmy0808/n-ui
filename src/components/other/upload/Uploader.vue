@@ -1,11 +1,18 @@
 <template>
   <div class="uploader-container">
-    <div @click="onClickUpload">
+    <div style="display: inline-block" @click="onClickUpload">
       <slot></slot>
+    </div>
+    <div>
+      <slot name="tips"></slot>
     </div>
     <div ref="temp" style="width: 0; height: 0; overflow: hidden"></div>
     <ul v-if="fileList.length" class="uploader-items">
-      <li v-for="it in fileList" :key="it.tempId">
+      <li
+        v-for="it in fileList"
+        :key="it.tempId"
+        :class="{ 'item-load': it.status === 'uploading' }"
+      >
         <n-icon v-if="it.status === 'done'" icon="i-success" class="success" />
         <n-icon
           v-else-if="it.status === 'uploading'"
@@ -33,6 +40,10 @@ export default {
   name: 'NUploader',
   components: { NIcon },
   props: {
+    multiple: {
+      type: Boolean,
+      default: false,
+    },
     sizeLimit: {
       type: Number,
       default: 1024 * 1024 * 2,
@@ -85,7 +96,7 @@ export default {
     createInputElement() {
       const oInput = document.createElement('input');
       oInput.type = 'file';
-      oInput.multiple = 'true';
+      oInput.multiple = this.multiple;
       oInput.accept = this.accept;
       this.tempDom.appendChild(oInput);
       return oInput;
@@ -189,11 +200,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../styles/var.scss';
+.uploader-container {
+  display: inline-block;
+}
 .uploader-items {
   padding: 1em 0;
   list-style: none;
   color: #999;
   font-size: 14px;
+  .item-load {
+    animation: item_load 2s linear infinite;
+  }
   li {
     display: flex;
     align-items: center;
@@ -203,15 +221,16 @@ export default {
     border-radius: 4px;
     padding: 0 0.5em;
     cursor: pointer;
-    background: white;
+     background: lighten($color: $gray, $amount: 24%);
+     margin: 1em;
     &:hover {
       background: #f3f3f4;
-      color: #3d60fa;
+      color: $primary;
     }
     img {
       width: 20px;
       height: 20px;
-      margin: 0.5em;
+      margin: 0.2em;
     }
     .upload-file-name {
       margin-right: auto;
@@ -242,6 +261,14 @@ export default {
     }
     100% {
       -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes item_load {
+    0% {
+      background: lighten($color: $gray, $amount: 19%);
+    }
+    100% {
+     background: lighten($color: $gray, $amount: 24%);
     }
   }
 }

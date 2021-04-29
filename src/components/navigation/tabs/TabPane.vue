@@ -36,5 +36,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '../../../styles/var.scss';
+.tabs-pane-container{
+  color: $words;
+  font-size: $base-size;
+  padding: 1em;
+}
 </style>
