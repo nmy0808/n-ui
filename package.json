@@ -1,7 +1,7 @@
 {
   "name": "nmy-ui",
   "description": " 一套基于 Vue 2.6 的 UI 组件库。",
-  "version": "0.1.9",
+  "version": "0.1.15",
   "main": "dist/nui.umd.min.js",
   "repository": {
     "type": "git",
@@ -21,7 +21,9 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:git": "./deploy.sh",
-    "npm:lib": "npx vue-cli-service build --target lib --name nui src/index.js"
+    "npm:build": "npx vue-cli-service build --target lib --name nui src/index.js",
+    "npm:publish": "npm publish"
+    
   },
   "dependencies": {
     "core-js": "^3.6.5",

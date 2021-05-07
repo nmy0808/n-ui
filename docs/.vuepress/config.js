@@ -13,7 +13,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'github', link: 'https://github.com/nmy0808/nmy-ui' },
-      { text: 'vue3.0版本', link: 'https://github.com/nmy0808/nmy-ui' }
+      { text: 'vue3.0版本', link: '' }
     ],
     sidebar: [
       '/',

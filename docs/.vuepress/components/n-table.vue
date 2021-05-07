@@ -163,7 +163,6 @@ export default {
   },
   methods: {
     handleEdit(item) {
-      console.log(item);
       this.$toast(`学生id:\b${item.id}, \b\b\b 学生姓名:\b${item.name}\b\b`);
     },
     onUpdateOrder(order){

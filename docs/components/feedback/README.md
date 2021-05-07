@@ -2,7 +2,7 @@
 title: 反馈组件
 ---
 
-## toast
+## toast 插件
 
 用于交互反馈。
 <br>
@@ -15,10 +15,8 @@ title: 反馈组件
 
 ```js
 import Vue from 'vue';
-import { toast } from 'nmy-ui/plugins';
-
-Vue.use(toast);
-
+import { plugins } from 'nmy-ui';
+Vue.use(plugins.toast);
 ...
 onClick()
 {
@@ -46,5 +44,60 @@ onClick()
 | enabledHtml | 提示内容支持html                              | Boolean          | -    | false  |
 | position    | 组件显示位置：`top` `middle` `bottom`         | String           | -    | top    |
 
+<br/>  
+<br/>  
+<br/>  
 
+## message 插件
+
+用于消息提示。
+<br>
+</br>
+<ClientOnly/>
+<n-message/>
+</ClientOnly>
+
+### 基础用法
+
+```js
+import Vue from 'vue';
+import { plugins } from 'nmy-ui';
+Vue.use(plugins.message);
+...
+<n-button @click="onClick">点击</n-button>
+...
+methods: {
+  onClick() {
+    this.$message(
+      { 
+        content: '消息提示', 
+        duration: '3000',  // 组件显示总时长	
+        success: true,     // 主题
+        container: 父容器,  // 默认body
+      }
+    );
+  },
+    ...
+},
+```
+
+
+
+### message Attributes
+
+| 属性名                              | 含义                                           | 类型             | 必填 | 默认值  |
+| ----------------------------------- | ---------------------------------------------- | ---------------- | ---- | ------- |
+| duration                            | 组件显示总时长                                   | String \| Number | 否   | 2000    |
+| container                           | 该组件的父级容器, 组件始终居中父容器, body除外 | Dom              | 否   | Body    |
+| content                             | 显示内容                                       | String           | 是   | -       |
+| primary \| success \| danger\| warn | 组件主题                                       | Boolean          | 否   | primary |
+
+
+### message Events
+
+| 属性名  | 含义           | 回调参数 |
+| ------- | -------------- | -------- |
+| onClose | 组件结束时回调 | -        |
+
+<br></br>
 
